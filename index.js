@@ -92,8 +92,8 @@ window.addEventListener("mousemove", (e) => {
 //mobile gyroscope version
 window.addEventListener("deviceorientation", (e) => {
     alpha = (e.alpha / 360);
-    beta = (e.beta / 360);
-    gamma = (e.gamma / 360);
+    beta = (e.beta / 45);
+    gamma = (e.gamma / 45);
 
     rootStyles.setProperty("--orientation-x", beta);
     rootStyles.setProperty("--orientation-y", gamma);
