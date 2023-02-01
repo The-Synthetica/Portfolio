@@ -426,8 +426,8 @@ main{
     /* transform: rotateY( calc( -20deg))
                rotateX( calc( 20deg));            */
 
-    --rotateY:calc( var(--orientation-y) / 50 * 40deg - 20deg);
-    --rotateX:calc( var(--orientation-x) / 50 * 40deg - 20deg);
+    --rotateY:calc( var(--orientation-y) / 50 * 20deg);
+    --rotateX:calc( var(--orientation-x) / 50 * 20deg);
 
     /* rotate: var(--rotateX), var(--rotateY);
     rota */
