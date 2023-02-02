@@ -133,6 +133,9 @@ window.addEventListener('scroll', e => {
             // console.log(flag);
             fullscreenScrolls[cont].style.top= "0";
             fullscreenScrolls[cont].style.opacity= "1";
+            
+            window.scrollTo(0, main.offsetHeight / 4);
+            console.log(main.offsetHeight / 4)
         } 
 
         else if((actualScrollTop < (lastScrollTop - offsetHeight)) && (flag===" ") && (cont > 0)){
@@ -151,10 +154,11 @@ window.addEventListener('scroll', e => {
             // console.log(flag);
             fullscreenScrolls[cont].style.top= "0";
             fullscreenScrolls[cont].style.opacity= "1";
+
+            window.scrollTo(0, main.offsetHeight / 4);
+            console.log(main.offsetHeight / 4)
         }
 
     lastScrollTop = actualScrollTop;
-    window.scrollTo(0, main.offsetHeight / 4);
-    console.log(main.offsetHeight / 4)
     // console.log(cont);
 });
