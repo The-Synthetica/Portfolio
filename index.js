@@ -111,7 +111,7 @@ window.addEventListener("deviceorientation", (e) => {
     beta = (e.beta);
     gamma = (e.gamma);
 
-    let x= beta / 45;
+    let x= beta;
     let y= gamma;
 
     // Limitaciones
