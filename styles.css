@@ -4,11 +4,11 @@
 }
 
 html::-webkit-scrollbar {
-    /* display: none; */
+    display: none;
 }
 html{
-    /* -ms-overflow-style: none;  IE and Edge */
-    /* scrollbar-width: none;  Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 @font-face {
@@ -307,7 +307,6 @@ main{
 }
 #description{
     text-shadow: 0px 0px 5px rgba(0, 0, 0,0.5);
-    color: cyan;
 }
 
 
@@ -505,7 +504,7 @@ main{
 
 /* Cursor 3d animated Card */
 @media (pointer: fine) {
-    .follow-card{
+.follow-card{
     position: relative;
     
     transition: transform 0.5s ease-out;
@@ -548,6 +547,10 @@ main{
 .follow-card:hover::before{
     opacity: 1;
     transition: opacity 0.5s ease-in;
+}
+#landing-page{
+    background: rgb(15,10,11);
+    background: linear-gradient(calc(var(--mouse-x) * -40deg + 20deg + 45deg), rgba(15,10,11,1) 0%, rgba(64,18,18,1) 25%, rgba(13,10,11,0.9755252442773985) 50%, rgba(64,18,18,1) 75%, rgba(15,10,11,1) 100%);
 }
 }
 
