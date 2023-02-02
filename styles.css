@@ -485,14 +485,16 @@ main{
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     z-index: 1;
-    /* background: linear-gradient(calc(var(--mouse-x) * -40deg + 20deg), rgba(0,0,0,0) 30%, rgba(255,255,255,0.5) 50%, rgba(0,0,0,0) 70%); */
-    background: linear-gradient(calc(var(--orientation-y) / 90 * 1deg), rgba(0,0,0,0) 30%, rgba(255,255,255,0.5) 50%, rgba(0,0,0,0) 70%);
+
+    /* background: linear-gradient(calc(var(--orientation-y) / 90 * 1deg), rgba(0,0,0,0) 30%, rgba(255,255,255,0.5) 50%, rgba(0,0,0,0) 70%); */
+    background: linear-gradient(calc(var(--orientation-y) * 1deg), rgba(0,0,0,0) 30%, rgba(255,255,255,0.5) 50%, rgba(0,0,0,0) 70%);
     
     opacity: 0.25;
     filter: blur(90px);
     
-    /* transform: translateY(calc(var(--mouse-y) * 40px - 20px)); */
+    /* transform: translateY(calc(var(--orientation-x) / 50 * 20px)); */
     transform: translateY(calc(var(--orientation-x) / 50 * 20px));
+
 
     transition: opacity 0.5s ease-in-out;
 }
