@@ -1,5 +1,14 @@
 *{
     box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+html{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
 @font-face {
@@ -71,6 +80,10 @@ body{
 }
 h1{
     margin: 0 !important;
+}
+
+#html{
+    /* overflow: hidden; */
 }
 
 
@@ -230,13 +243,18 @@ h1{
 
 
 
-/* Welcome Section */
+
 main{
     color: white;
     font-family: 'Gelasio', serif;
-    background: linear-gradient(rgb(17, 24, 39), rgb(75, 85, 99)) fixed;
+    /* background: linear-gradient(rgb(17, 24, 39), rgb(75, 85, 99)) fixed; */
+    background: rgb(25,25,25);
+    background: linear-gradient(-45deg, rgba(25,25,25,1) 0%, rgba(0,0,80,1) 100%);
+
+    overflow-x: hidden;
 }
 
+/* Welcome Section */
 #welcome-section{
     width: 100%;
     height: 100vh;
@@ -344,24 +362,48 @@ main{
 
     overflow: hidden;
 
-    /* background-color: blueviolet; */
+    /* margin: 2rem 0; */
+    padding: 1rem 0.5rem;
+    padding-top: var(--navbarHeight);
 
-    margin: 1rem 0;
-    padding: 4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
 }
-
 .project-title{
+    position: absolute;
+    top: 0; left: 0;
+
+    width: 100%;
+    
+    padding: 1rem;
+    padding-top: calc(var(--navbarHeight) + 1rem);
+
     text-align: center;
     font-size: 2rem;
 }
-
 .project-frame{
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    /* position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0; */
+    /* padding: 5rem; */
+}
 
-    display: flex;
-    align-items: center;
-    padding: 5rem;
+#landing-page{
+    background: rgb(15,10,11);
+    background: linear-gradient(45deg, rgba(15,10,11,1) 0%, rgba(64,18,18,1) 25%, rgba(13,10,11,0.9755252442773985) 50%, rgba(64,18,18,1) 75%, rgba(15,10,11,1) 100%);
+}
+
+#documentation-page{
+    background: #000000;
+    background: linear-gradient(var(--angulo), #230034, #0a0a00);
+    
+    animation: rotate 20s cubic-bezier(.20,.80,.80,.20) infinite;
+}
+
+#survey-page{
+    background: rgb(0, 10, 20);
+    box-shadow: 0px 0px 40px 20px rgba(0,0,0,0.7) inset;
 }
 
 /* Media Querys */
@@ -401,14 +443,14 @@ main{
 .scrollFade-notVisible{
     overflow: hidden;
     opacity: 0;
-    transform: translateX(20px) translateY(20px);
+    transform: translateX(20px) translateY(0px);
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 .scrollFade-Visible{
     opacity: 1;
     transform: translateX(0px) translateY(0px);
 
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    transition: opacity 0.5s ease-in-out 0.5s, transform 0.3s ease-in-out 0.5s;
 }
 
 /* Gyroscopyc 3d animated Card */
@@ -437,8 +479,11 @@ main{
 
 }
 .follow-card::before{
-    --rotateY:calc( var(--orientation-x) * 40deg - 20deg);
-    --rotateX:calc( var(--orientation-y) * 40deg - 20deg);
+    /* --rotateY:calc( var(--orientation-x) * 40deg - 20deg);
+    --rotateX:calc( var(--orientation-y) * 40deg - 20deg); */
+    
+    --rotateY:calc( var(--orientation-y) / 50 * 20deg);
+    --rotateX:calc( var(--orientation-x) / 50 * 20deg);
 
     content: "";
     position: absolute;
@@ -507,4 +552,23 @@ main{
     opacity: 1;
     transition: opacity 0.5s ease-in;
 }
+}
+
+/* Sections Fullscreen Scroll */
+.main-content{
+    position: relative;
+    width: 100%;
+    height: 200vh;
+    background-color: red;
+}
+
+.fullscreenScroll{
+    position: fixed;
+    top: 100vh; left: 0;
+    opacity: 0;
+
+    transition: top 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+.fullscreenScroll:nth-child(1){
+    top: 0;
 }
