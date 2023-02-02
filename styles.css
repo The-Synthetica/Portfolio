@@ -392,7 +392,7 @@ main{
 
 #landing-page{
     background: rgb(15,10,11);
-    background: linear-gradient(45deg, rgba(15,10,11,1) 0%, rgba(64,18,18,1) 25%, rgba(13,10,11,0.9755252442773985) 50%, rgba(64,18,18,1) 75%, rgba(15,10,11,1) 100%);
+    /* background: linear-gradient(45deg, rgba(15,10,11,1) 0%, rgba(64,18,18,1) 25%, rgba(13,10,11,0.9755252442773985) 50%, rgba(64,18,18,1) 75%, rgba(15,10,11,1) 100%); */
 }
 
 #documentation-page{
@@ -467,9 +467,10 @@ main{
 
     /* transform: rotateY( calc( -20deg))
                rotateX( calc( 20deg));            */
+    --rotateX:calc(( var(--orientation-x) * (20deg) ) / (100deg))
 
-    --rotateY:calc( var(--orientation-y) * 20deg);
-    --rotateX:calc( var(--orientation-x) / 25 * 20deg);
+    --rotateY:calc( var(--orientation-y) * 0.5deg);
+    /* --rotateX:calc( var(--orientation-x) / 25 * 20deg); */
 
     /* rotate: var(--rotateX), var(--rotateY);
     rota */
