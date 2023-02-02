@@ -74,6 +74,15 @@ function cargarElemento (entradas, observer){
     });
 
 }
+function limitar( a, max, min){
+    if (a > max)
+        return max;
+
+    else if(a < min)
+        return min;
+
+    return a;
+}
 
 // Burger menu uncheck
 for (var i = 0; i < burgerMenuLinks.length; i++) {
@@ -102,8 +111,15 @@ window.addEventListener("deviceorientation", (e) => {
     beta = (e.beta);
     gamma = (e.gamma);
 
-    rootStyles.setProperty("--orientation-x", beta);
-    rootStyles.setProperty("--orientation-y", gamma);
+    let x= beta / 45;
+    let y= gamma;
+
+    // Limitaciones
+    y= limitar(y, 20, -20);
+    x= limitar(x, 20, -20);
+
+    rootStyles.setProperty("--orientation-x", x);
+    rootStyles.setProperty("--orientation-y", y);
 
     console.log(alpha, beta, gamma)
 }, true);
