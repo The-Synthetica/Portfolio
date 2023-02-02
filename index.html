@@ -10,7 +10,7 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;0,700;1,400;1,500;1,600;1,700&family=Open+Sans:wght@700&display=swap" rel="stylesheet">
 
     </head>
     <body id="body">
@@ -32,9 +32,13 @@
                     <div class="burger-item-after"></div>
 
                     <div id="nav-drop" class="dropdown-content">
-                        <a class="nav-link" target="_blank" href="https://github.com/The-Synthetica">Github</a>
+                        <!-- <a class="nav-link" target="_blank" href="https://github.com/The-Synthetica">Github</a>
                         <a class="nav-link" target="" href="#">Contacto</a>
-                        <a class="nav-link" target="_blank" href="https://linktr.ee/FranciscoRizzi">LinkedIn</a>
+                        <a class="nav-link" target="_blank" href="https://linktr.ee/FranciscoRizzi">LinkedIn</a> -->
+                        <a class="nav-link" translate="_blank" href="https://linktr.ee/FranciscoRizzi">
+                            <iconify-icon id="iconic-link" width="40" height="40" icon="simple-icons:linktree"></iconify-icon>
+                            <span>Linktree</span>
+                        </a>
                     </div>
                 </label>
 
@@ -74,7 +78,18 @@
             </section>
 
             <section id="documentation-page" class="project-section fullscreenScroll">
-                <h1 class="project-title scrollFade-notVisible">Technical Documentation Page</h1>
+                <h1 class="project-title scrollFade-notVisible">
+                    Technical Documentation Page
+                    
+                    <div class="glitch">
+                        <span aria-hidden="true">Technical Documentation Page</span>
+                        <span aria-hidden="true">Technical Documentation Page</span>
+                        <span aria-hidden="true">Technical Documentation Page</span>
+                        <span aria-hidden="true">Technical Documentation Page</span>
+                    </div>
+                
+                </h1>
+                
                     <div class="project-frame scrollFade-notVisible">
                         <div id="wrap-frame-1" class="wrap-frame-wrap follow-card">
                             <div class="frame-wrap">
@@ -109,6 +124,7 @@
         </main>
 
         <script src="./index.js"></script>
-        
+        <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script>
+
     </body>
 </html>

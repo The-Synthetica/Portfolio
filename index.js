@@ -178,3 +178,5 @@ window.addEventListener('scroll', e => {
     lastScrollTop = actualScrollTop;
     // console.log(cont);
 });
+
+burgerCheckbox.addEventListener('click', grayscaleStyle, false);
