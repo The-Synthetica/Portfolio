@@ -22,9 +22,21 @@ const burgerCheckbox= document.getElementById('burger-checkbox');
 
 //Scroll Fade
 const scrollNotVisible= document.getElementsByClassName('scrollFade-notVisible');
-// scrollNotVisible.forEach( (elemento) => {
-//     observer.observe(elemento);
-// })
+
+// Loader
+const loader= document.getElementById('wrap-loader');
+const circle1= document.getElementById('circle-1');
+const circle2= document.getElementById('circle-2');
+
+
+// FullScreen Scrolled Sections
+let lastScrollTop= 0; let offsetHeight=0;
+let cont= 0; let flag=" ";
+let pointBar=((cont + 1) * (100 / fullscreenScrolls.length));
+
+// NavPointer
+const pointer= document.getElementById('pointer');
+let prop= (100 - pointBar)  + '%';
 
 initialize();
 
@@ -40,7 +52,17 @@ onresize = (event) => {
             rootStyles.setProperty('--frame-height', frameHeight+"px");
 };
 onload = (event) => {
+    
+    setTimeout(() => { 
+        loader.classList.toggle('loaded');
+        
+        // circle1.classList.toggle('circle1-loaded');
+        // circle2.classList.toggle('circle2-loaded');
+    },  500);
 
+    setTimeout(() => { 
+        loader.style.display= 'none';
+    }, 2000);
 };
 
 //Observador 
@@ -61,6 +83,11 @@ function initialize(){
             let frameHeight= 900 * scalarX;
             rootStyles.setProperty('--scalar-x', scalarX);
             rootStyles.setProperty('--frame-height', frameHeight+"px");
+
+    // Pointer
+    pointer.style.right= prop;
+    // rootStyles.setProperty('--const', 0.5);
+
 }
 function cargarElemento (entradas, observer){
 
@@ -82,6 +109,11 @@ function limitar( a, max, min){
         return min;
 
     return a;
+}
+function barChange(cont){
+    pointBar=((cont + 1) * (100 / fullscreenScrolls.length));
+    prop= (100 - pointBar)  + '%';
+    pointer.style.right= prop;
 }
 
 // Burger menu uncheck
@@ -126,24 +158,23 @@ window.addEventListener("deviceorientation", (e) => {
 
 
 // FullScreen Scrolled Sections
-
-let lastScrollTop= 0; let offsetHeight=0;
-let cont= 0; let flag=" ";
-
 window.addEventListener('scroll', e => {
     let actualScrollTop = html.scrollTop;
 
-        if ((actualScrollTop > (lastScrollTop + offsetHeight)) && (flag===" ") && (cont < 3)){
+        if ((actualScrollTop > (lastScrollTop + offsetHeight)) && (flag===" ") && (cont < (fullscreenScrolls.length - 1))){
             fullscreenScrolls[cont].style.top= "100vh";
             fullscreenScrolls[cont].style.opacity= "0";
 
+
             cont++;
                 page.style.overflow="hidden";
+                
+                barChange(cont);
 
             setTimeout(() => { 
                 flag = " ";
                 page.style.overflow="auto";
-        }, 2000);
+            }, 1000);
 
             flag="abajo";
             // console.log(flag);
@@ -151,7 +182,6 @@ window.addEventListener('scroll', e => {
             fullscreenScrolls[cont].style.opacity= "1";
             
             window.scrollTo(0, main.offsetHeight / 4);
-            console.log(main.offsetHeight / 4)
         } 
 
         else if((actualScrollTop < (lastScrollTop - offsetHeight)) && (flag===" ") && (cont > 0)){
@@ -159,12 +189,13 @@ window.addEventListener('scroll', e => {
             fullscreenScrolls[cont].style.opacity= "0";
             cont--;
                 page.style.overflow="hidden";
-
+                
+                barChange(cont);
 
             setTimeout(() => { 
                 flag = " ";
                 page.style.overflow="auto";
-            }, 2000);
+            }, 1000);
             
             flag="arriba";
             // console.log(flag);
@@ -172,11 +203,7 @@ window.addEventListener('scroll', e => {
             fullscreenScrolls[cont].style.opacity= "1";
 
             window.scrollTo(0, main.offsetHeight / 4);
-            console.log(main.offsetHeight / 4)
         }
 
     lastScrollTop = actualScrollTop;
-    // console.log(cont);
 });
-
-burgerCheckbox.addEventListener('click', grayscaleStyle, false);

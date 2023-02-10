@@ -11,19 +11,6 @@ html{
     scrollbar-width: none;
 }
 
-@font-face {
-    font-family: Reospec;
-    src: url("./Reospec.otf");
-}
-@font-face {
-    font-family: NebulaHollow;
-    src: url("./Nebula-Hollow.otf");
-}
-@font-face {
-    font-family: DuneRise;
-    src: url("./Dune_Rise.otf");
-}
-
 :root{
     --navbarHeight: 50px;
 
@@ -41,6 +28,9 @@ html{
     /* Colors */
     --burger-color: white;
     --burger-color-active: black;
+
+    /* Animations */
+    --const: 1;
 }
 
 /* Propiedades (variables personalizadas) */
@@ -49,6 +39,7 @@ html{
     inherits: false;
     initial-value: 0deg;
 }
+
 @property --ColorAnimation1{
     syntax: "<color>";
     inherits: false;
@@ -70,6 +61,17 @@ html{
     initial-value: rgb(51, 55, 85);
 }
 
+@property --length1{
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+@property --length2{
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 7px;
+}
+
 /* Estilos generales */
 
 a{
@@ -82,7 +84,64 @@ h1{
     margin: 0 !important;
 }
 
+/* Loader */
+#wrap-loader{
+    position: fixed;
+    z-index: 15;
 
+    background: linear-gradient(rgb(0, 0, 0), rgb(30, 1, 1));
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loader{
+    display: flex;
+    scale: 0.5;
+    animation: loader 2s infinite linear;
+}
+#circle-1{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #ff00ff;
+
+    opacity: 0.7;
+
+    box-shadow: 0 0 10px 5px #ff77ff;
+
+    animation: circle1 1s infinite linear forwards;
+}
+#circle-2{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #00ffff;
+
+    opacity: 0.7;
+
+    box-shadow: 0 0 10px 5px #77ffff;
+
+    animation: circle2 1s infinite linear forwards;
+}
+
+.loaded{
+    animation: loaded 1s forwards;
+}
+
+@keyframes c1Loaded {
+    from{
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+
+    to{
+        transform: rotateX(45deg) rotateY(0deg);
+    }
+}
 
 /* Header */
 #navbar{
@@ -270,6 +329,48 @@ h1{
 }
 
 
+/* Nav pointer */
+#nav-pointer{
+    position: fixed;
+
+    width: 100%;
+    height: 2vh;
+
+    z-index: 9;
+
+    top: var(--navbarHeight);
+    
+    opacity: 0.7;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+
+    background:-webkit-repeating-linear-gradient(45deg, #575757 var(--length1), #000000 var(--length2));
+    background:-o-repeating-linear-gradient(45deg, #575757 var(--length1), #000000 var(--length2));
+    background:-moz-repeating-linear-gradient(45deg, #575757 var(--length1), #000000 var(--length2));
+    background:repeating-linear-gradient(45deg, #575757 var(--length1), #000000 var(--length2));
+
+    animation: positionBar 10s infinite linear reverse;
+}
+#pointer{
+    position: fixed;
+
+    width: 100%;
+    height: 2vh;
+
+    right: 100%;
+
+    background:-webkit-repeating-linear-gradient(-45deg, #08000f 0px, #998c00 7px);
+    background:-o-repeating-linear-gradient(-45deg, #08000f 0px, #998c00 7px);
+    background:-moz-repeating-linear-gradient(-45deg, #08000f 0px, #998c00 7px);
+    background:repeating-linear-gradient(-45deg, #08000f 0px, #998c00 7px);
+
+    clip-path: polygon(0 100%, 0 0, calc(100% - 7px) 0, 100% 50%, calc(100% - 7px) 100%);
+
+    transition: right 1.25s cubic-bezier(1,-0.08,.52,1.02);
+}
 
 
 
@@ -313,11 +414,26 @@ main{
     font-weight: 800;
 }
 #welcome-title{
-    background-image: conic-gradient( from var(--angulo),
+    
+    background: #000000;
+    background: -webkit-linear-gradient( from var(--angulo),
     var(--ColorAnimation1) 0%,
     var(--ColorAnimation2) 50%,
     var(--BGAnimation1) 50%,
     var(--BGAnimation2) 100%);
+
+    background: -moz-linear-gradient( from var(--angulo),
+    var(--ColorAnimation1) 0%,
+    var(--ColorAnimation2) 50%,
+    var(--BGAnimation1) 50%,
+    var(--BGAnimation2) 100%);
+
+    background: conic-gradient( from var(--angulo),
+    var(--ColorAnimation1) 0%,
+    var(--ColorAnimation2) 50%,
+    var(--BGAnimation1) 50%,
+    var(--BGAnimation2) 100%);
+
         
     -webkit-background-clip: text;
     color: transparent;
@@ -342,9 +458,6 @@ main{
 }
 
 
-
-
-/* Projects Section */
 
 /* Responsive Iframe */
 
@@ -778,4 +891,85 @@ main{
         clip-path: inset(0 0 98% 0);
     }
     
+}
+@keyframes positionBar {
+
+    0%{
+        --length1: 0px;
+        --length2: 7px;
+    }
+    
+    100%{
+        --length1: 133px;
+        --length2: 140px;
+    }
+    
+}
+
+@keyframes loaded {
+    from{
+        opacity: 1;
+    }
+
+    to{
+        opacity: 0;
+    }
+}
+@keyframes circle1 {
+    0%{
+        transform: translateX(0px) scale(1) translateZ(0px);
+    }
+
+    25%{
+        transform: translateX(100px) scale(0.75) translateZ(-1px);
+        opacity: 0.7;
+    }
+
+    50%{
+        transform: translateX(200px);
+    }
+
+    75%{
+        transform: translateX(100px) scale(1.25) translateZ(1px);
+        opacity: 0.9;
+        z-index: 2;
+    }
+
+    100%{
+        transform: translateX(0px) scale(1) translateZ(0px);
+    }
+}
+@keyframes circle2 {
+    0%{
+        transform: translateX(0px) scale(1) translateZ(0px);
+    }
+
+    25%{
+        transform: translateX(-100px) scale(1.25) translateZ(1px);
+        z-index: 2;
+        opacity: 0.9;
+    }
+
+    50%{
+        transform: translateX(-200px);
+    }
+
+    75%{
+        transform: translateX(-100px) scale(0.75) translateZ(-1px);
+        z-index: 1;
+        opacity: 0.7;
+    }
+
+    100%{
+        transform: translateX(0px) scale(1) translateZ(0px);
+    }
+}
+@keyframes loader {
+    from{
+        transform: rotateZ(0deg);
+    }
+
+    to{
+        transform: rotateZ(360deg);
+    }
 }
