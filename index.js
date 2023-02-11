@@ -12,6 +12,10 @@ const body= document.getElementById('body');
 const section1= document.getElementById('projects');
 const fullscreenScrolls= document.getElementsByClassName('fullscreenScroll');
 
+//Welcome Section
+const linkWelcomeSection= document.getElementById('link-welcome-section');
+const welcomeSection= document.getElementById('welcome-section');
+
 // Frame
 const frame=document.getElementById('wrap-frame-1')
 const frameRes=rootStyles.getPropertyValue('--origin-width');
@@ -30,13 +34,17 @@ const circle2= document.getElementById('circle-2');
 
 
 // FullScreen Scrolled Sections
-let lastScrollTop= 0; let offsetHeight=0;
+let lastScrollTop= 0; let offsetHeight=10;
 let cont= 0; let flag=" ";
 let pointBar=((cont + 1) * (100 / fullscreenScrolls.length));
 
 // NavPointer
-const pointer= document.getElementById('pointer');
+// const pointer= document.getElementById('pointer');
 let prop= (100 - pointBar)  + '%';
+
+// Progress Bar nav
+const bar= document.getElementById('nav-progress-bar');
+const barLinks= document.getElementsByClassName('bar-link');
 
 initialize();
 
@@ -85,7 +93,7 @@ function initialize(){
             rootStyles.setProperty('--frame-height', frameHeight+"px");
 
     // Pointer
-    pointer.style.right= prop;
+    // pointer.style.right= prop;
     // rootStyles.setProperty('--const', 0.5);
 
 }
@@ -110,10 +118,39 @@ function limitar( a, max, min){
 
     return a;
 }
-function barChange(cont){
+function barChange(cont, flag){
     pointBar=((cont + 1) * (100 / fullscreenScrolls.length));
     prop= (100 - pointBar)  + '%';
-    pointer.style.right= prop;
+    // pointer.style.right= prop;
+
+    if (cont > 0){
+        bar.style.top= "var(--navbarHeight)";
+
+        // barLinks[cont-1].style.color="blue";
+        for(let i=0; i<barLinks.length; i++)
+        barLinks[i].classList.remove('bar-link-focused');
+
+        barLinks[cont-1].classList.toggle('bar-link-focused');
+
+        if(flag == "abajo" && cont-2>=0){
+            // barLinks[cont-2].style.color="black";
+            // barLinks[cont-2].classList.toggle('bar-link-focused');
+            bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0)
+            console.log("abajo")
+        }
+        else if(flag == "arriba"){
+            // barLinks[cont].style.color="black";
+            // barLinks[cont].classList.toggle('bar-link-focused');
+            bar.scrollTo(bar.scrollLeft - barLinks[cont-1].offsetWidth, 0)
+            console.log("arriba")
+        }
+    }
+    else{
+        bar.style.top= "0";
+        barLinks[0].classList.remove('bar-link-focused');
+    }
+
+
 }
 
 // Burger menu uncheck
@@ -169,7 +206,6 @@ window.addEventListener('scroll', e => {
             cont++;
                 page.style.overflow="hidden";
                 
-                barChange(cont);
 
             setTimeout(() => { 
                 flag = " ";
@@ -177,7 +213,9 @@ window.addEventListener('scroll', e => {
             }, 1000);
 
             flag="abajo";
-            // console.log(flag);
+
+                barChange(cont, flag);
+
             fullscreenScrolls[cont].style.top= "0";
             fullscreenScrolls[cont].style.opacity= "1";
             
@@ -190,7 +228,7 @@ window.addEventListener('scroll', e => {
             cont--;
                 page.style.overflow="hidden";
                 
-                barChange(cont);
+                barChange(cont, flag);
 
             setTimeout(() => { 
                 flag = " ";
@@ -198,7 +236,9 @@ window.addEventListener('scroll', e => {
             }, 1000);
             
             flag="arriba";
-            // console.log(flag);
+            
+                barChange(cont, flag);
+
             fullscreenScrolls[cont].style.top= "0";
             fullscreenScrolls[cont].style.opacity= "1";
 
@@ -207,3 +247,130 @@ window.addEventListener('scroll', e => {
 
     lastScrollTop = actualScrollTop;
 });
+
+
+barLinks[0].addEventListener('click', e => {
+    fullscreenScrolls[cont].style.top= "100vh";
+    fullscreenScrolls[cont].style.opacity= "0";
+
+    cont=1;
+    barChange(cont, "");
+    
+    fullscreenScrolls[cont].style.top= "0";
+    fullscreenScrolls[cont].style.opacity= "1";
+
+    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
+    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
+    // bar.scrollTo((cont-1)*200, 0);
+    bar.scrollTo(0,0);
+
+    let dist=0;
+    for(let i=0; i<cont-1; i++){
+        dist+=barLinks[i].offsetWidth + 30;
+    }
+
+    bar.scrollTo(dist, 0);
+    
+    
+    window.scrollTo(0, main.offsetHeight / 4);
+}, false);
+
+barLinks[1].addEventListener('click', e => {
+    fullscreenScrolls[cont].style.top= "100vh";
+    fullscreenScrolls[cont].style.opacity= "0";
+
+    cont=2;
+    barChange(cont, "");
+    
+    fullscreenScrolls[cont].style.top= "0";
+    fullscreenScrolls[cont].style.opacity= "1";
+
+    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
+    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
+    bar.scrollTo(0, 0);
+
+    let dist=0;
+    for(let i=0; i<cont-1; i++){
+        dist+=barLinks[i].offsetWidth + 30;
+    }
+
+    bar.scrollTo(dist, 0);
+    
+    
+    window.scrollTo(0, main.offsetHeight / 4);
+}, false);
+
+barLinks[2].addEventListener('click', e => {
+    fullscreenScrolls[cont].style.top= "100vh";
+    fullscreenScrolls[cont].style.opacity= "0";
+
+    cont=3;
+    barChange(cont, "");
+    
+    fullscreenScrolls[cont].style.top= "0";
+    fullscreenScrolls[cont].style.opacity= "1";
+
+    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
+    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
+    bar.scrollTo(0, 0);
+
+    let dist=0;
+    for(let i=0; i<cont-1; i++){
+        dist+=barLinks[i].offsetWidth + 30;
+    }
+
+    bar.scrollTo(dist, 0);
+    
+    
+    window.scrollTo(0, main.offsetHeight / 4);
+}, false);
+
+barLinks[3].addEventListener('click', e => {
+    fullscreenScrolls[cont].style.top= "100vh";
+    fullscreenScrolls[cont].style.opacity= "0";
+
+    cont=4;
+    barChange(cont, "");
+    
+    fullscreenScrolls[cont].style.top= "0";
+    fullscreenScrolls[cont].style.opacity= "1";
+
+    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
+    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
+    bar.scrollTo(0, 0);
+
+    let dist=0;
+    for(let i=0; i<cont-1; i++){
+        dist+=barLinks[i].offsetWidth + 30;
+    }
+
+    bar.scrollTo(dist, 0);
+    
+    
+    window.scrollTo(0, main.offsetHeight / 4);
+}, false);
+
+linkWelcomeSection.addEventListener('click', e => {
+    fullscreenScrolls[cont].style.top= "100vh";
+    fullscreenScrolls[cont].style.opacity= "0";
+
+    cont=0;
+    barChange(cont, "");
+    
+    fullscreenScrolls[cont].style.top= "0";
+    fullscreenScrolls[cont].style.opacity= "1";
+
+    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
+    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
+    bar.scrollTo(0, 0);
+
+    let dist=0;
+    for(let i=0; i<cont-1; i++){
+        dist+=barLinks[i].offsetWidth + 30;
+    }
+
+    bar.scrollTo(dist, 0);
+    
+    
+    window.scrollTo(0, main.offsetHeight / 4);
+}, false);

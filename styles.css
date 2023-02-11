@@ -12,7 +12,7 @@ html{
 }
 
 :root{
-    --navbarHeight: 50px;
+    --navbarHeight: 40px;
 
     /* Iframe Vars */
 
@@ -77,10 +77,7 @@ html{
 a{
     text-decoration: none;
 }
-body{
-    margin: 0;
-}
-h1{
+body, h1{
     margin: 0 !important;
 }
 
@@ -133,17 +130,8 @@ h1{
     animation: loaded 1s forwards;
 }
 
-@keyframes c1Loaded {
-    from{
-        transform: rotateX(0deg) rotateY(0deg);
-    }
-
-    to{
-        transform: rotateX(45deg) rotateY(0deg);
-    }
-}
-
 /* Header */
+
 #navbar{
     position: fixed;
     top: 0; left: 0;
@@ -156,9 +144,105 @@ h1{
     z-index: 10;
 
     display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform-style: preserve-3d;
+
+    background-color: #000;
+}
+
+/* Progress Bar */
+#nav-progress-bar{
+    position: fixed;
+    z-index: 9;
+
+    width: 100%;
+    height: var(--navbarHeight);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
     
-    background: rgb(5,5,5);
-    background: linear-gradient(45deg, rgba(5,5,5,0) 50%, rgba(0, 0, 0, 1) 100%);
+    font-family: 'Gelasio', serif;
+    font-size: 0.9rem;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    
+    transform-style: preserve-3d;
+
+    background-color: #bbb;
+
+    transition: top 0.75s ease-in-out;
+}
+#nav-progress-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.link-wrap{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 0 15px;
+
+    position: absolute;
+    left: 0;
+
+    min-width: max-content;
+    width: 100%;
+}
+.bar-link{
+    display: block;
+    position: relative;
+
+    text-align:  center;
+
+    /* background-color: white; */
+    margin: 0 15px;
+    color: #575757b3;
+    
+    transition: color 0.25s ease-in-out;
+}
+.bar-link::before{
+    content: "";
+    position: absolute;
+    
+    width: 100%;
+    height: 3px;
+
+    top: 100%;
+
+    background-color: rgb(0, 0, 0);
+    z-index: 0;
+
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+
+    transition: clip-path 1s ease-in-out;
+}
+
+.bar-link-focused{
+    position: relative;
+    color: rgb(0, 0, 0);
+    z-index: 9;
+}
+.bar-link.bar-link-focused::before{
+    clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+}
+
+
+#link-welcome-section{
+    color: white;
+    font-family: 'Gelasio', serif;
+    font-size: 1.2rem;
+}
+
+#welcome-section{
+
 }
 
 /* Burguer menu */
@@ -188,19 +272,19 @@ h1{
     position: absolute;
     background-color: var(--burger-color);
     
-    width: 30px;
-    height: 3px;
+    width: 20px;
+    height: 2px;
     border-radius: 5px;
 
-    transform: translateY(-10px);
+    transform: translateY(-7px);
     transition: rotate 0.25s ease-out, transform 0.25s ease-out 0.25s, background-color 0.5s ease-out 0.25s;
 }
 .burger-item{
     position: absolute;
     background-color: var(--burger-color);
     
-    width: 30px;
-    height: 3px;
+    width: 20px;
+    height: 2px;
     border-radius: 5px;
 
     transition: opacity 0.5s ease-out 0.25s;
@@ -209,11 +293,11 @@ h1{
     position: absolute;
     background-color: var(--burger-color);
     
-    width: 30px;
-    height: 3px;
+    width: 20px;
+    height: 2px;
     border-radius: 5px;
     
-    transform: translateY(10px);
+    transform: translateY(7px);
     transition: rotate 0.25s ease-out, transform 0.25s ease-out 0.25s, background-color 0.5s ease-out 0.25s;
 }
 
@@ -468,7 +552,6 @@ main{
     overflow: hidden;
     position: relative;
 }
-
 .frame-wrap{
     position: absolute;
     width: var(--origin-width);
@@ -478,13 +561,11 @@ main{
 
     transform-origin: top left;
 }
-
 .project-tile{
     width: 100%;
     height: 100%;
     border: 0;
 }
-
 .frame-link{
     position:absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -517,7 +598,7 @@ main{
     width: 100%;
     
     padding: 1rem;
-    padding-top: calc(var(--navbarHeight) * 2);
+    padding-top: calc(var(--navbarHeight) * 3);
 
     text-align: center;
     font-size: 2rem;
@@ -566,6 +647,10 @@ main{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0px 0px 10px rgba(255,255,255,0.5);
+}
+
+#about-me{
+    background-color: purple;
 }
 
 /* Media Querys */
@@ -813,7 +898,7 @@ main{
 
 .glitch span{
     position: absolute;
-    top: calc(var(--navbarHeight) * 2);
+    top: calc(var(--navbarHeight) * 3);
     left: 0;
     bottom: 0;
     right: 0;
