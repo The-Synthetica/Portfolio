@@ -526,7 +526,8 @@ main{
     background-image: cross-fade(10px);
     background-position: center;
 
-    animation: rotate 20s cubic-bezier(.11,.74,.81,.16) infinite;
+    /* animation: rotate 20s cubic-bezier(.11,.74,.81,.16) infinite; */
+    animation: rotate 20s cubic-bezier(.81,-0.99,.56,1.88) infinite;
 }
 #name{
     display: block;
