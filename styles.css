@@ -176,6 +176,8 @@ body, h1{
     transform-style: preserve-3d;
 
     background-color: #bbb;
+    
+    top: 0;
 
     transition: top 0.75s ease-in-out;
 }
@@ -609,6 +611,8 @@ main{
     /* position: absolute;
     top: 0; left: 0; right: 0; bottom: 0; */
     /* padding: 5rem; */
+    position: relative;
+    top: var(--navbarHeight);
 }
 
 #landing-page{
