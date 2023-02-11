@@ -194,6 +194,173 @@ window.addEventListener("deviceorientation", (e) => {
 }, true);
 
 
+
+barLinks[0].addEventListener('click', e => {
+    fullscreenScrolls[cont].style.top= "100vh";
+    fullscreenScrolls[cont].style.opacity= "0";
+
+    cont=1;
+    barChange(cont, "");
+    
+    fullscreenScrolls[cont].style.top= "0";
+    fullscreenScrolls[cont].style.opacity= "1";
+
+    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
+    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
+    // bar.scrollTo((cont-1)*200, 0);
+    bar.scrollTo(0,0);
+
+    let dist=0;
+    for(let i=0; i<cont-1; i++){
+        dist+=barLinks[i].offsetWidth + 30;
+    }
+
+    bar.scrollTo(dist, 0);
+
+    page.style.overflow="hidden";
+    
+    setTimeout(() => { 
+        flag = " ";
+        page.style.overflow="auto";
+    }, 1000);
+
+    flag="stop";
+    
+    window.scrollTo(0, main.offsetHeight / 4);
+}, false);
+
+barLinks[1].addEventListener('click', e => {
+    fullscreenScrolls[cont].style.top= "100vh";
+    fullscreenScrolls[cont].style.opacity= "0";
+
+    cont=2;
+    barChange(cont, "");
+    
+    fullscreenScrolls[cont].style.top= "0";
+    fullscreenScrolls[cont].style.opacity= "1";
+
+    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
+    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
+    bar.scrollTo(0, 0);
+
+    let dist=0;
+    for(let i=0; i<cont-1; i++){
+        dist+=barLinks[i].offsetWidth + 30;
+    }
+
+    bar.scrollTo(dist, 0);
+
+    page.style.overflow="hidden";
+    
+    setTimeout(() => { 
+        flag = " ";
+        page.style.overflow="auto";
+    }, 1000);
+
+    flag="stop";
+    
+    window.scrollTo(0, main.offsetHeight / 4);
+}, false);
+
+barLinks[2].addEventListener('click', e => {
+    fullscreenScrolls[cont].style.top= "100vh";
+    fullscreenScrolls[cont].style.opacity= "0";
+
+    cont=3;
+    barChange(cont, "");
+    
+    fullscreenScrolls[cont].style.top= "0";
+    fullscreenScrolls[cont].style.opacity= "1";
+
+    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
+    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
+    bar.scrollTo(0, 0);
+
+    let dist=0;
+    for(let i=0; i<cont-1; i++){
+        dist+=barLinks[i].offsetWidth + 30;
+    }
+
+    bar.scrollTo(dist, 0);
+
+    page.style.overflow="hidden";
+    
+    setTimeout(() => { 
+        flag = " ";
+        page.style.overflow="auto";
+    }, 1000);
+
+    flag="stop";
+    
+    window.scrollTo(0, main.offsetHeight / 4);
+}, false);
+
+barLinks[3].addEventListener('click', e => {
+    fullscreenScrolls[cont].style.top= "100vh";
+    fullscreenScrolls[cont].style.opacity= "0";
+
+    cont=4;
+    barChange(cont, "");
+    
+    fullscreenScrolls[cont].style.top= "0";
+    fullscreenScrolls[cont].style.opacity= "1";
+
+    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
+    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
+    bar.scrollTo(0, 0);
+
+    let dist=0;
+    for(let i=0; i<cont-1; i++){
+        dist+=barLinks[i].offsetWidth + 30;
+    }
+
+    bar.scrollTo(dist, 0);
+
+    page.style.overflow="hidden";
+    
+    setTimeout(() => { 
+        flag = " ";
+        page.style.overflow="auto";
+    }, 1000);
+
+    flag="stop";    
+    
+    window.scrollTo(0, main.offsetHeight / 4);
+}, false);
+
+linkWelcomeSection.addEventListener('click', e => {
+    fullscreenScrolls[cont].style.top= "100vh";
+    fullscreenScrolls[cont].style.opacity= "0";
+
+    cont=0;
+    barChange(cont, "");
+    
+    fullscreenScrolls[cont].style.top= "0";
+    fullscreenScrolls[cont].style.opacity= "1";
+
+    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
+    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
+    bar.scrollTo(0, 0);
+
+    let dist=0;
+    for(let i=0; i<cont-1; i++){
+        dist+=barLinks[i].offsetWidth + 30;
+    }
+
+    bar.scrollTo(dist, 0);
+
+    page.style.overflow="hidden";
+    
+    setTimeout(() => { 
+        flag = " ";
+        page.style.overflow="auto";
+    }, 1000);
+
+    flag="stop";
+    
+    window.scrollTo(0, main.offsetHeight / 4);
+}, false);
+
 // FullScreen Scrolled Sections
 window.addEventListener('scroll', e => {
     let actualScrollTop = html.scrollTop;
@@ -247,130 +414,3 @@ window.addEventListener('scroll', e => {
 
     lastScrollTop = actualScrollTop;
 });
-
-
-barLinks[0].addEventListener('click', e => {
-    fullscreenScrolls[cont].style.top= "100vh";
-    fullscreenScrolls[cont].style.opacity= "0";
-
-    cont=1;
-    barChange(cont, "");
-    
-    fullscreenScrolls[cont].style.top= "0";
-    fullscreenScrolls[cont].style.opacity= "1";
-
-    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
-    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
-    // bar.scrollTo((cont-1)*200, 0);
-    bar.scrollTo(0,0);
-
-    let dist=0;
-    for(let i=0; i<cont-1; i++){
-        dist+=barLinks[i].offsetWidth + 30;
-    }
-
-    bar.scrollTo(dist, 0);
-    
-    
-    window.scrollTo(0, main.offsetHeight / 4);
-}, false);
-
-barLinks[1].addEventListener('click', e => {
-    fullscreenScrolls[cont].style.top= "100vh";
-    fullscreenScrolls[cont].style.opacity= "0";
-
-    cont=2;
-    barChange(cont, "");
-    
-    fullscreenScrolls[cont].style.top= "0";
-    fullscreenScrolls[cont].style.opacity= "1";
-
-    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
-    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
-    bar.scrollTo(0, 0);
-
-    let dist=0;
-    for(let i=0; i<cont-1; i++){
-        dist+=barLinks[i].offsetWidth + 30;
-    }
-
-    bar.scrollTo(dist, 0);
-    
-    
-    window.scrollTo(0, main.offsetHeight / 4);
-}, false);
-
-barLinks[2].addEventListener('click', e => {
-    fullscreenScrolls[cont].style.top= "100vh";
-    fullscreenScrolls[cont].style.opacity= "0";
-
-    cont=3;
-    barChange(cont, "");
-    
-    fullscreenScrolls[cont].style.top= "0";
-    fullscreenScrolls[cont].style.opacity= "1";
-
-    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
-    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
-    bar.scrollTo(0, 0);
-
-    let dist=0;
-    for(let i=0; i<cont-1; i++){
-        dist+=barLinks[i].offsetWidth + 30;
-    }
-
-    bar.scrollTo(dist, 0);
-    
-    
-    window.scrollTo(0, main.offsetHeight / 4);
-}, false);
-
-barLinks[3].addEventListener('click', e => {
-    fullscreenScrolls[cont].style.top= "100vh";
-    fullscreenScrolls[cont].style.opacity= "0";
-
-    cont=4;
-    barChange(cont, "");
-    
-    fullscreenScrolls[cont].style.top= "0";
-    fullscreenScrolls[cont].style.opacity= "1";
-
-    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
-    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
-    bar.scrollTo(0, 0);
-
-    let dist=0;
-    for(let i=0; i<cont-1; i++){
-        dist+=barLinks[i].offsetWidth + 30;
-    }
-
-    bar.scrollTo(dist, 0);
-    
-    
-    window.scrollTo(0, main.offsetHeight / 4);
-}, false);
-
-linkWelcomeSection.addEventListener('click', e => {
-    fullscreenScrolls[cont].style.top= "100vh";
-    fullscreenScrolls[cont].style.opacity= "0";
-
-    cont=0;
-    barChange(cont, "");
-    
-    fullscreenScrolls[cont].style.top= "0";
-    fullscreenScrolls[cont].style.opacity= "1";
-
-    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
-    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
-    bar.scrollTo(0, 0);
-
-    let dist=0;
-    for(let i=0; i<cont-1; i++){
-        dist+=barLinks[i].offsetWidth + 30;
-    }
-
-    bar.scrollTo(dist, 0);
-    
-    
-    window.scrollTo(0, main.offsetHeight / 4);
-}, false);
