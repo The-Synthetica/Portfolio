@@ -503,25 +503,26 @@ main{
     
     background: #000000;
     
-    background: conic-gradient(from 45deg,
+    background: -webkit-linear-gradient(var(--angulo),
     var(--ColorAnimation1) 0%,
     var(--ColorAnimation2) 50%,
     var(--BGAnimation1) 50%,
     var(--BGAnimation2) 100%);
 
-    /* background: conic-gradient( from var(--angulo),
+    background: conic-gradient( from var(--angulo),
     var(--ColorAnimation1) 0%,
     var(--ColorAnimation2) 50%,
     var(--BGAnimation1) 50%,
-    var(--BGAnimation2) 100%); */
+    var(--BGAnimation2) 100%);
 
         
     -webkit-background-clip: text;
     color: transparent;
 
     background-size: 200% 200%;
-    background-image: cross-fade(10px);
     background-position: center;
+
+    backdrop-filter: blur(10px);
 
     /* animation: rotate 20s cubic-bezier(.11,.74,.81,.16) infinite; */
     animation: rotate 20s cubic-bezier(.81,-0.99,.56,1.88) infinite;
@@ -536,6 +537,7 @@ main{
 }
 #description{
     margin: 4rem 1.5rem;
+    color: black;
     text-shadow: 0px 0px 10px rgba(0, 255, 255, 0.4);
 }
 
@@ -622,8 +624,8 @@ main{
 
 #documentation-page{
     background: #000000;
-    
-    background: linear-gradient(45deg, #230034, #0a0a00);
+
+    background: -webkit-linear-gradient(var(--angulo), #230034, #0a0a00);
     background: linear-gradient(var(--angulo), #230034, #0a0a00);
     
     animation: rotate 20s cubic-bezier(.20,.80,.80,.20) infinite;
