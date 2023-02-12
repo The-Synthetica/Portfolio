@@ -502,23 +502,18 @@ main{
 #welcome-title{
     
     background: #000000;
-    background: -webkit-linear-gradient( from var(--angulo),
+    
+    background: conic-gradient(from 45deg,
     var(--ColorAnimation1) 0%,
     var(--ColorAnimation2) 50%,
     var(--BGAnimation1) 50%,
     var(--BGAnimation2) 100%);
 
-    background: -moz-linear-gradient( from var(--angulo),
+    /* background: conic-gradient( from var(--angulo),
     var(--ColorAnimation1) 0%,
     var(--ColorAnimation2) 50%,
     var(--BGAnimation1) 50%,
-    var(--BGAnimation2) 100%);
-
-    background: conic-gradient( from var(--angulo),
-    var(--ColorAnimation1) 0%,
-    var(--ColorAnimation2) 50%,
-    var(--BGAnimation1) 50%,
-    var(--BGAnimation2) 100%);
+    var(--BGAnimation2) 100%); */
 
         
     -webkit-background-clip: text;
@@ -627,6 +622,7 @@ main{
 
 #documentation-page{
     background: #000000;
+    /* background: linear-gradient(45deg, #230034, #0a0a00); */
     background: linear-gradient(var(--angulo), #230034, #0a0a00);
     
     animation: rotate 20s cubic-bezier(.20,.80,.80,.20) infinite;
