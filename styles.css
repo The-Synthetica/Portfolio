@@ -622,7 +622,8 @@ main{
 
 #documentation-page{
     background: #000000;
-    /* background: linear-gradient(45deg, #230034, #0a0a00); */
+    
+    background: linear-gradient(45deg, #230034, #0a0a00);
     background: linear-gradient(var(--angulo), #230034, #0a0a00);
     
     animation: rotate 20s cubic-bezier(.20,.80,.80,.20) infinite;
