@@ -501,15 +501,21 @@ main{
 }
 #welcome-title{
     
-    background: #000000;
+    background: rgb(0, 0, 0);
     
-    background: -webkit-linear-gradient(var(--angulo),
+    background: -webkit-linear-gradient(-45deg,
     var(--ColorAnimation1) 0%,
     var(--ColorAnimation2) 50%,
     var(--BGAnimation1) 50%,
     var(--BGAnimation2) 100%);
-
-    /* background: conic-gradient( from var(--angulo),
+    
+    /* background: -webkit-linear-gradient(var(--angulo),
+    var(--ColorAnimation1) 0%,
+    var(--ColorAnimation2) 50%,
+    var(--BGAnimation1) 50%,
+    var(--BGAnimation2) 100%); */
+/* 
+    background: conic-gradient( from var(--angulo),
     var(--ColorAnimation1) 0%,
     var(--ColorAnimation2) 50%,
     var(--BGAnimation1) 50%,
