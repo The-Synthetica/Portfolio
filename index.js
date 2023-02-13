@@ -222,8 +222,8 @@ window.addEventListener("deviceorientation", (e) => {
     beta = (e.beta);
     gamma = (e.gamma);
 
-    let x= beta;
-    let y= gamma;
+    let x= beta - betaAnt;
+    let y= gamma - gammaAnt;
 
     // Limitaciones
     y= limitar(y, 20, -20);
@@ -232,8 +232,31 @@ window.addEventListener("deviceorientation", (e) => {
     rootStyles.setProperty("--orientation-x", x);
     rootStyles.setProperty("--orientation-y", y);
 
+    setTimeout(() => { 
+                    betaAnt= beta;
+                    gammaAnt= gamma;
+                    }, 1000);
+
     console.log(alpha, beta, gamma)
 }, true);
+
+// window.addEventListener("deviceorientation", (e) => {
+//     alpha = (e.alpha / 360);
+//     beta = (e.beta);
+//     gamma = (e.gamma);
+
+//     let x= beta;
+//     let y= gamma;
+
+//     // Limitaciones
+//     y= limitar(y, 20, -20);
+//     x= limitar(x, 20, -20);
+
+//     rootStyles.setProperty("--orientation-x", x);
+//     rootStyles.setProperty("--orientation-y", y);
+
+//     console.log(alpha, beta, gamma)
+// }, true);
 
 
 
