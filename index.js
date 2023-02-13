@@ -178,6 +178,13 @@ window.addEventListener("mousemove", (e) => {
 let betaAnt=0;
 let gammaAnt=0;
 
+let initFlag="",
+    initBeta=0,
+    initGamma=0;
+
+let minY=-5, maxY=5;
+let minX=-20, maxX=20;
+
 // window.addEventListener("deviceorientation", (e) => {
 //     beta = (e.beta);
 //     gamma = (e.gamma);
@@ -216,26 +223,38 @@ let gammaAnt=0;
 // }, true);
 
 window.addEventListener("deviceorientation", (e) => {
+    if(initFlag==""){
+        initBeta= Math.round(e.beta);
+        initGamma= Math.round(e.gamma);
+        initFlag="iniciado"
+    }
+    
     let alpha = Math.round(e.alpha);
     let beta = Math.round(e.beta);
     let gamma = Math.round(e.gamma);
 
-    if(beta>90)
-        beta-=90;
-    else if(beta>45)
-        beta-=45;
+    if((beta-initBeta)>maxX || (beta-initBeta)<minX){
+        initBeta=beta;
+    }
+
+    if((gamma-initGamma)>maxY || (gamma-initGamma)<minY){
+        initGamma=gamma;
+    }
+
+    beta= beta-initGamma;
+    gamma= gamma-initGamma;
 
     let y= gamma;
     let x= beta;
 
     // Limitaciones
-    y= limitar(y, 10, -10);
-    x= limitar(x, 20, -20);
+    y= limitar(y, maxY, minY);
+    x= limitar(x, maxX, minX);
 
     rootStyles.setProperty("--orientation-x", x);
     rootStyles.setProperty("--orientation-y", y);
 
-    console.log(alpha, beta, gamma)
+    console.log(initFlag,alpha, beta, gamma)
 }, true);
 
 // window.addEventListener("deviceorientation", (e) => {
@@ -479,3 +498,6 @@ window.addEventListener('scroll', e => {
 
     lastScrollTop = actualScrollTop;
 });
+
+
+//scalamiento numerico 
