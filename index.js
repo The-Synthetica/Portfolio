@@ -219,9 +219,21 @@ window.addEventListener("deviceorientation", (e) => {
     const alpha = Math.round(e.alpha);
     const beta = Math.round(e.beta);
     const gamma = Math.round(e.gamma);
+    
+    if(beta<0)
+        beta= 360-beta;
 
-    let y= beta;
-    let x= gamma;
+    if(beta>270)
+        beta-=270;
+    else if(beta>180)
+        beta-=180;
+    else if(beta>90)
+        beta-=90;
+    else if(beta>45)
+        beta-=45;
+
+    let y= gamma;
+    let x= beta;
 
     // Limitaciones
     y= limitar(y, 10, -10);
