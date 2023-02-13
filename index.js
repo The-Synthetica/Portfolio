@@ -175,23 +175,61 @@ window.addEventListener("mousemove", (e) => {
 }, false);
 
 //mobile gyroscope version
+let gyroscopeFlag="",
+betaAnt=0,
+gammaAnt=0,
+x=0,
+y=0;
 window.addEventListener("deviceorientation", (e) => {
-    alpha = (e.alpha / 360);
     beta = (e.beta);
     gamma = (e.gamma);
 
-    let x= beta;
-    let y= gamma;
+    if(beta!=betaAnt && gamma!=gammaAnt){
+        x= beta-betaAnt;
+        y= gamma-gammaAnt;
 
-    // Limitaciones
-    y= limitar(y, 20, -20);
-    x= limitar(x, 20, -20);
+        // Limitaciones
+        y= limitar(y, 20, -20);
+        x= limitar(x, 20, -20);
 
-    rootStyles.setProperty("--orientation-x", x);
-    rootStyles.setProperty("--orientation-y", y);
+        rootStyles.setProperty("--orientation-x", 0);
+        rootStyles.setProperty("--orientation-y", 0);
 
-    console.log(alpha, beta, gamma)
+        betaAnt=beta;
+        gammaAnt=gamma;
+    }
+
+    else{ 
+        
+        setTimeout(() => { 
+            if(beta==betaAnt && gamma==gammaAnt){
+                rootStyles.setProperty("--orientation-x", 0);
+                rootStyles.setProperty("--orientation-y", 0);
+            }
+        }, 1000);
+
+    }
+
+    console.log(beta, gamma)
 }, true);
+
+// window.addEventListener("deviceorientation", (e) => {
+//     alpha = (e.alpha / 360);
+//     beta = (e.beta);
+//     gamma = (e.gamma);
+
+//     let x= beta;
+//     let y= gamma;
+
+//     // Limitaciones
+//     y= limitar(y, 20, -20);
+//     x= limitar(x, 20, -20);
+
+//     rootStyles.setProperty("--orientation-x", x);
+//     rootStyles.setProperty("--orientation-y", y);
+
+//     console.log(alpha, beta, gamma)
+// }, true);
 
 
 
@@ -333,7 +371,9 @@ linkWelcomeSection.addEventListener('click', e => {
     fullscreenScrolls[cont].style.opacity= "0";
 
     cont=0;
-    barChange(cont, "");
+    barChange(cont, flag)
+    for(let i=0; i<barLinks.length; i++)
+    barLinks[i].classList.remove('bar-link-focused');
     
     fullscreenScrolls[cont].style.top= "0";
     fullscreenScrolls[cont].style.opacity= "1";
@@ -414,3 +454,6 @@ window.addEventListener('scroll', e => {
 
     lastScrollTop = actualScrollTop;
 });
+
+
+// flag movement gyroscope
