@@ -236,11 +236,17 @@ window.addEventListener("deviceorientation", (e) => {
     let gamma = Math.round(e.gamma);
 
     if( ((beta-initBeta) > (maxX + offsetDeg)) || ((beta-initBeta) < (minX - offsetDeg)) ){
-        initBeta=beta;
+        setTimeout(() => {
+            if( ((beta-initBeta) > (maxX + offsetDeg)) || ((beta-initBeta) < (minX - offsetDeg)) ){
+                initBeta=beta;}
+        }, 1000);
     }
 
     if( ((gamma-initGamma) > (maxY + offsetDeg))  || ((gamma-initGamma) < (minY - offsetDeg)) ){
-        initGamma=gamma;
+        setTimeout(() => {
+            if( ((gamma-initGamma) > (maxY + offsetDeg))  || ((gamma-initGamma) < (minY - offsetDeg)) ){
+                initGamma=gamma;}
+        }, 1000);
     }
 
     beta= beta-initGamma;
