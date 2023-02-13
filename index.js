@@ -184,7 +184,7 @@ let initFlag="",
 
 let offsetDeg= 5;
 
-let minY=-5, maxY=5;
+let minY=-5, maxY=2;
 let minX=-20, maxX=20;
 
 // window.addEventListener("deviceorientation", (e) => {
