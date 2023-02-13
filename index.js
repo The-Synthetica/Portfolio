@@ -216,10 +216,10 @@ let gammaAnt=0;
 // }, true);
 
 window.addEventListener("deviceorientation", (e) => {
-    const alpha = Math.round(e.alpha);
-    const beta = Math.round(e.beta);
-    const gamma = Math.round(e.gamma);
-    
+    let alpha = Math.round(e.alpha);
+    let beta = Math.round(e.beta);
+    let gamma = Math.round(e.gamma);
+
     if(beta<0)
         beta= 360-beta;
 
