@@ -177,7 +177,7 @@ window.addEventListener("mousemove", (e) => {
 //mobile gyroscope version
 let betaAnt=0;
 let gammaAnt=0;
-let xAnt=0, yAnt=0;
+
 // window.addEventListener("deviceorientation", (e) => {
 //     beta = (e.beta);
 //     gamma = (e.gamma);
@@ -216,12 +216,12 @@ let xAnt=0, yAnt=0;
 // }, true);
 
 window.addEventListener("deviceorientation", (e) => {
-    alpha = Math.round(e.alpha);
-    beta = Math.round(e.beta);
-    gamma = Math.round(e.gamma);
+    const alpha = Math.round(e.alpha);
+    const beta = Math.round(e.beta);
+    const gamma = Math.round(e.gamma);
 
-    let x= (beta - betaAnt);
-    let y= (gamma - gammaAnt);
+    let y= beta;
+    let x= gamma;
 
     // Limitaciones
     y= limitar(y, 10, -10);
@@ -229,15 +229,6 @@ window.addEventListener("deviceorientation", (e) => {
 
     rootStyles.setProperty("--orientation-x", x);
     rootStyles.setProperty("--orientation-y", y);
-    
-    xAnt=X;
-    yAnt=Y;
-
-    setTimeout(() => { 
-                    // betaAnt= beta;
-                    // gammaAnt= gamma;
-                    
-    }, 1000);
 
     console.log(alpha, beta, gamma)
 }, true);
@@ -483,6 +474,3 @@ window.addEventListener('scroll', e => {
 
     lastScrollTop = actualScrollTop;
 });
-
-
-// flag movement gyroscope
