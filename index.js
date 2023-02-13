@@ -216,7 +216,7 @@ let xAnt=0, yAnt=0;
 // }, true);
 
 window.addEventListener("deviceorientation", (e) => {
-    alpha = Math.round(e.alpha / 360);
+    alpha = Math.round(e.alpha);
     beta = Math.round(e.beta);
     gamma = Math.round(e.gamma);
 
@@ -224,7 +224,7 @@ window.addEventListener("deviceorientation", (e) => {
     let y= (gamma - gammaAnt);
 
     // Limitaciones
-    y= limitar(y, 5, -5);
+    y= limitar(y, 10, -10);
     x= limitar(x, 20, -20);
 
     rootStyles.setProperty("--orientation-x", x);
