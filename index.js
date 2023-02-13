@@ -180,60 +180,60 @@ betaAnt=0,
 gammaAnt=0,
 x=0,
 y=0;
-window.addEventListener("deviceorientation", (e) => {
-    beta = (e.beta);
-    gamma = (e.gamma);
-
-    if(beta!=betaAnt && gamma!=gammaAnt){
-        x= beta-betaAnt;
-        y= gamma-gammaAnt;
-
-        // Limitaciones
-        y= limitar(y, 20, -20);
-        x= limitar(x, 20, -20);
-
-        rootStyles.setProperty("--orientation-x", 0);
-        rootStyles.setProperty("--orientation-y", 0);
-
-        betaAnt=beta;
-        gammaAnt=gamma;
-
-        console.log("aaaa")
-    }
-
-    else{ 
-        
-        setTimeout(() => { 
-            if(beta==betaAnt && gamma==gammaAnt){
-                rootStyles.setProperty("--orientation-x", 0);
-                rootStyles.setProperty("--orientation-y", 0);
-
-                console.log("reinicio")
-            }
-        }, 1000);
-
-    }
-
-    console.log(beta, gamma)
-}, true);
-
 // window.addEventListener("deviceorientation", (e) => {
-//     alpha = (e.alpha / 360);
 //     beta = (e.beta);
 //     gamma = (e.gamma);
 
-//     let x= beta;
-//     let y= gamma;
+//     if(beta!=betaAnt && gamma!=gammaAnt){
+//         x= beta-betaAnt;
+//         y= gamma-gammaAnt;
 
-//     // Limitaciones
-//     y= limitar(y, 20, -20);
-//     x= limitar(x, 20, -20);
+//         // Limitaciones
+//         y= limitar(y, 20, -20);
+//         x= limitar(x, 20, -20);
 
-//     rootStyles.setProperty("--orientation-x", x);
-//     rootStyles.setProperty("--orientation-y", y);
+//         rootStyles.setProperty("--orientation-x", 0);
+//         rootStyles.setProperty("--orientation-y", 0);
 
-//     console.log(alpha, beta, gamma)
+//         betaAnt=beta;
+//         gammaAnt=gamma;
+
+//         console.log("aaaa")
+//     }
+
+//     else{ 
+        
+//         setTimeout(() => { 
+//             if(beta==betaAnt && gamma==gammaAnt){
+//                 rootStyles.setProperty("--orientation-x", 0);
+//                 rootStyles.setProperty("--orientation-y", 0);
+
+//                 console.log("reinicio")
+//             }
+//         }, 1000);
+
+//     }
+
+//     console.log(beta, gamma)
 // }, true);
+
+window.addEventListener("deviceorientation", (e) => {
+    alpha = (e.alpha / 360);
+    beta = (e.beta);
+    gamma = (e.gamma);
+
+    let x= beta;
+    let y= gamma;
+
+    // Limitaciones
+    y= limitar(y, 20, -20);
+    x= limitar(x, 20, -20);
+
+    rootStyles.setProperty("--orientation-x", x);
+    rootStyles.setProperty("--orientation-y", y);
+
+    console.log(alpha, beta, gamma)
+}, true);
 
 
 
