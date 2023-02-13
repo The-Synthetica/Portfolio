@@ -175,11 +175,9 @@ window.addEventListener("mousemove", (e) => {
 }, false);
 
 //mobile gyroscope version
-let gyroscopeFlag="",
-betaAnt=0,
-gammaAnt=0,
-x=0,
-y=0;
+let betaAnt=0;
+let gammaAnt=0;
+let xAnt=0, yAnt=0;
 // window.addEventListener("deviceorientation", (e) => {
 //     beta = (e.beta);
 //     gamma = (e.gamma);
@@ -218,24 +216,28 @@ y=0;
 // }, true);
 
 window.addEventListener("deviceorientation", (e) => {
-    alpha = (e.alpha / 360);
-    beta = (e.beta);
-    gamma = (e.gamma);
+    alpha = Math.round(e.alpha / 360);
+    beta = Math.round(e.beta);
+    gamma = Math.round(e.gamma);
 
-    let x= beta - betaAnt;
-    let y= gamma - gammaAnt;
+    let x= (beta - betaAnt);
+    let y= (gamma - gammaAnt);
 
     // Limitaciones
-    y= limitar(y, 20, -20);
+    y= limitar(y, 5, -5);
     x= limitar(x, 20, -20);
 
     rootStyles.setProperty("--orientation-x", x);
     rootStyles.setProperty("--orientation-y", y);
+    
+    xAnt=X;
+    yAnt=Y;
 
     setTimeout(() => { 
-                    betaAnt= beta;
-                    gammaAnt= gamma;
-                    }, 1000);
+                    // betaAnt= beta;
+                    // gammaAnt= gamma;
+                    
+    }, 1000);
 
     console.log(alpha, beta, gamma)
 }, true);
