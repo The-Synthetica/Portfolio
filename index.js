@@ -182,6 +182,8 @@ let initFlag="",
     initBeta=0,
     initGamma=0;
 
+let offsetDeg= 5;
+
 let minY=-5, maxY=5;
 let minX=-20, maxX=20;
 
@@ -233,11 +235,11 @@ window.addEventListener("deviceorientation", (e) => {
     let beta = Math.round(e.beta);
     let gamma = Math.round(e.gamma);
 
-    if((beta-initBeta)>maxX || (beta-initBeta)<minX){
+    if( ((beta-initBeta) > (maxX + offsetDeg)) || ((beta-initBeta) < (minX - offsetDeg)) ){
         initBeta=beta;
     }
 
-    if((gamma-initGamma)>maxY || (gamma-initGamma)<minY){
+    if( ((gamma-initGamma) > (maxY + offsetDeg))  || ((gamma-initGamma) < (minY - offsetDeg)) ){
         initGamma=gamma;
     }
 
