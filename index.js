@@ -220,14 +220,7 @@ window.addEventListener("deviceorientation", (e) => {
     let beta = Math.round(e.beta);
     let gamma = Math.round(e.gamma);
 
-    if(beta<0)
-        beta= 360-beta;
-
-    if(beta>270)
-        beta-=270;
-    else if(beta>180)
-        beta-=180;
-    else if(beta>90)
+    if(beta>90)
         beta-=90;
     else if(beta>45)
         beta-=45;
