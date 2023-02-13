@@ -743,7 +743,7 @@ main{
     transform: rotateX(var(--rotateX))
                rotateY(var(--rotateY));
 
-    transition: transform 0s ease-in-out;
+    transition: transform 0.25s ease-in-out;
 
 }
 .follow-card::before{
