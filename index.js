@@ -197,6 +197,8 @@ window.addEventListener("deviceorientation", (e) => {
 
         betaAnt=beta;
         gammaAnt=gamma;
+
+        console.log("aaaa")
     }
 
     else{ 
@@ -205,6 +207,8 @@ window.addEventListener("deviceorientation", (e) => {
             if(beta==betaAnt && gamma==gammaAnt){
                 rootStyles.setProperty("--orientation-x", 0);
                 rootStyles.setProperty("--orientation-y", 0);
+
+                console.log("reinicio")
             }
         }, 1000);
 
