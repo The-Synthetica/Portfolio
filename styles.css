@@ -27,20 +27,20 @@ html{
 
     /* Colors */
     --burger-color: white;
-    --burger-color-active: black;
+    --burger-color-active: white;
 
     /* Animations */
     --const: 1;
 }
 
 /* Propiedades (variables personalizadas) */
-@property --angulo {
+/* @property --angulo {
     syntax: "<angle>";
     inherits: false;
     initial-value: 0deg;
-}
+} */
 
-@property --ColorAnimation1{
+/* @property --ColorAnimation1{
     syntax: "<color>";
     inherits: false;
     initial-value: rgb(255,0,255);
@@ -70,7 +70,9 @@ html{
     syntax: "<length>";
     inherits: false;
     initial-value: 7px;
-}
+} */
+
+
 
 /* Estilos generales */
 
@@ -97,32 +99,81 @@ body, h1{
 }
 
 #loader{
+    width: 200px;
+    height: 200px;
+
+    position: relative;
+    opacity: 0.7;
+
     display: flex;
-    scale: 0.25;
+    justify-content: center;
+    align-items: center;
 }
-#circle-1{
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-color: #ff00ff;
 
-    opacity: 0.7;
+.loader-bar{
+    --center: 25px;
+    --const: 0.7;
 
-    box-shadow: 0 0 10px 5px #ff77ff;
+    position: absolute;
 
-    animation: circle1 1s infinite linear forwards;
+    width: 25px;
+    height: 5px;
+
+    border-radius: 5px;
+
+    background-color: white;
+    margin: 1rem;
+
+    animation: loader calc(1s * var(--const)) linear infinite;
+    -webkit-animation: loader calc(1s * var(--const)) linear infinite;
 }
-#circle-2{
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-color: #00ffff;
 
-    opacity: 0.7;
-
-    box-shadow: 0 0 10px 5px #77ffff;
-
-    animation: circle2 1s infinite linear forwards;
+.loader-bar:nth-child(1){
+    transform: translate( 0, calc(var(--center) * -1 - 2.5px) ) rotate(90deg);
+    animation-delay: 0s;
+    -webkit-animation-delay: 0s;
+    
+}
+.loader-bar:nth-child(2){
+    transform: translate( calc(var(--center) - 5px) , calc(var(--center) * -1 + 5px) ) rotate(-45deg);
+    animation-delay: calc(-0.125s * var(--const));
+    -webkit-animation-delay: calc(-0.125s * var(--const));
+    
+}
+.loader-bar:nth-child(3){
+    transform: translate( calc(var(--center) + 2.5px) , 0) rotate(0deg) ;
+    animation-delay: calc(-0.25s * var(--const));
+    -webkit-animation-delay: calc(-0.25s * var(--const));
+    
+}
+.loader-bar:nth-child(4){
+    transform: translate( calc(var(--center) - 5px) , calc(var(--center) - 5px) ) rotate(45deg) ;
+    animation-delay: calc(-0.375s * var(--const));
+    -webkit-animation-delay: calc(-0.375s * var(--const));
+    
+}
+.loader-bar:nth-child(5){
+    transform: translate( 0, calc(var(--center) + 2.5px)) rotate(90deg) ;
+    animation-delay: calc(-0.5s * var(--const));
+    -webkit-animation-delay: calc(-0.5s * var(--const));
+    
+}
+.loader-bar:nth-child(6){
+    transform: translate( calc(var(--center) * -1 + 5px) , calc(var(--center) - 5px) ) rotate(-45deg) ;
+    animation-delay: calc(-0.625s * var(--const));
+    -webkit-animation-delay: calc(-0.625s * var(--const));
+    
+}
+.loader-bar:nth-child(7){
+    transform: translate( calc(var(--center) * -1 - 2.5px) , 0) rotate(0deg) ;
+    animation-delay: calc(-0.75s * var(--const));
+    -webkit-animation-delay: calc(-0.75s * var(--const));
+    
+}
+.loader-bar:nth-child(8){
+    transform: translate( calc(var(--center) * -1 + 5px) , calc(var(--center) *-1 + 5px) ) rotate(45deg) ;
+    animation-delay: calc(-0.875s * var(--const));
+    -webkit-animation-delay: calc(-0.875s * var(--const));
 }
 
 .loaded{
@@ -174,7 +225,8 @@ body, h1{
     
     transform-style: preserve-3d;
 
-    background-color: #bbb;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px) brightness(2);
     
     top: 0;
 
@@ -233,6 +285,10 @@ body, h1{
 }
 .bar-link.bar-link-focused::before{
     clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+}
+
+.bar-link:hover{
+    color: black;
 }
 
 
@@ -403,10 +459,7 @@ body, h1{
     height: var(--navbarHeight);
 
     top: 0; left: 0;
-
-    
-    background: linear-gradient(45deg, rgba(5,5,5,0) 50%, rgba(220, 200, 255, 0.3) 100%);
-    
+    background: #000000;
 }
 
 
@@ -516,8 +569,9 @@ main{
     var(--BGAnimation1) 50%,
     var(--BGAnimation2) 100%);
 
+    background-clip: text;
     -webkit-background-clip: text;
-    color: rgba(0,0,0, 0);
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
 
     background-size: 200% 200%;
     background-position: center;
@@ -538,7 +592,6 @@ main{
 #description{
     margin: 4rem 1.5rem;
     text-shadow: 0px 0px 10px rgba(0, 255, 255, 0.4);
-    color: #000;
 }
 
 
@@ -689,7 +742,6 @@ main{
         transition: opacity 0.5s ease-in-out 1s;
     }
 
-
     .project-frame{
         width: 75%;
         margin: 0 auto;
@@ -707,6 +759,24 @@ main{
     .project-frame{
         width: 40%;
     }
+}
+
+@media (orientation: landscape) and (max-height: 550px) {
+        .project-title{
+            padding-top: calc(var(--navbarHeight) * 2);
+        }
+
+        .glitch span{
+            position: absolute;
+            top: calc(var(--navbarHeight) * 2) !important;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+        .project-frame{
+            width: 25%;
+            z-index: -1;
+        }
 }
 
 
@@ -1055,14 +1125,9 @@ main{
         transform: translateX(0px) scale(1) translateZ(0px);
     }
 }
-@keyframes loader {
-    from{
-        transform: rotateZ(0deg);
-    }
-
-    to{
-        transform: rotateZ(360deg);
-    }
+@keyframes loader{
+    from {opacity: 1;}
+    to {opacity: 0.25;}
 }
 
 /* Safari Animation */
@@ -1218,12 +1283,7 @@ main{
         transform: translateX(0px) scale(1) translateZ(0px);
     }
 }
-@-webkit-keyframes loader {
-    from{
-        transform: rotateZ(0deg);
-    }
-
-    to{
-        transform: rotateZ(360deg);
-    }
+@-webkit-keyframes loader{
+    from {opacity: 1;}
+    to {opacity: 0.25;}
 }

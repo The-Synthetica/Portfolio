@@ -46,9 +46,8 @@ let prop= (100 - pointBar)  + '%';
 const bar= document.getElementById('nav-progress-bar');
 const barLinks= document.getElementsByClassName('bar-link');
 
+
 initialize();
-
-
 
 // Eventos
 onresize = (event) => {
@@ -73,6 +72,7 @@ onload = (event) => {
     }, 2000);
 };
 
+
 //Observador 
 const observer = new IntersectionObserver( cargarElemento , {
     root: null,
@@ -92,11 +92,60 @@ function initialize(){
             rootStyles.setProperty('--scalar-x', scalarX);
             rootStyles.setProperty('--frame-height', frameHeight+"px");
 
-    // Pointer
-    // pointer.style.right= prop;
-    // rootStyles.setProperty('--const', 0.5);
+    // Properties
+    
+    
+    window.CSS.registerProperty({
+        name:'--angulo',
+        syntax: "<angle>",
+        inherits: false,
+        initialValue: '0deg',
+    });
 
+    window.CSS.registerProperty({
+        name:'--ColorAnimation1',
+        syntax: "<color>",
+        inherits: false,
+        initialValue: 'rgb(255,0,255)',
+    });
+
+    window.CSS.registerProperty({
+        name:'--ColorAnimation2',
+        syntax: "<color>",
+        inherits: false,
+        initialValue: 'rgb(0,255,255)',
+    });
+
+    window.CSS.registerProperty({
+        name:'--BGAnimation1',
+        syntax: "<color>",
+        inherits: false,
+        initialValue: 'rgb(51, 55, 85)',
+    });
+
+    window.CSS.registerProperty({
+        name:'--BGAnimation2',
+        syntax: "<color>",
+        inherits: false,
+        initialValue: 'rgb(51, 55, 85)',
+    });
+
+    window.CSS.registerProperty({
+        name:'--length1',
+        syntax: "<length>",
+        inherits: false,
+        initialValue: '0px',
+    });
+
+    window.CSS.registerProperty({
+        name:'--length2',
+        syntax: "<length>",
+        inherits: false,
+        initialValue: '7px',
+    });
+    
 }
+
 function cargarElemento (entradas, observer){
 
     entradas.forEach( (entrada) => {
@@ -187,43 +236,6 @@ let offsetDeg= 5;
 let minY=-5, maxY=2;
 let minX=-20, maxX=20;
 
-// window.addEventListener("deviceorientation", (e) => {
-//     beta = (e.beta);
-//     gamma = (e.gamma);
-
-//     if(beta!=betaAnt && gamma!=gammaAnt){
-//         x= beta-betaAnt;
-//         y= gamma-gammaAnt;
-
-//         // Limitaciones
-//         y= limitar(y, 20, -20);
-//         x= limitar(x, 20, -20);
-
-//         rootStyles.setProperty("--orientation-x", 0);
-//         rootStyles.setProperty("--orientation-y", 0);
-
-//         betaAnt=beta;
-//         gammaAnt=gamma;
-
-//         console.log("aaaa")
-//     }
-
-//     else{ 
-        
-//         setTimeout(() => { 
-//             if(beta==betaAnt && gamma==gammaAnt){
-//                 rootStyles.setProperty("--orientation-x", 0);
-//                 rootStyles.setProperty("--orientation-y", 0);
-
-//                 console.log("reinicio")
-//             }
-//         }, 1000);
-
-//     }
-
-//     console.log(beta, gamma)
-// }, true);
-
 window.addEventListener("deviceorientation", (e) => {
     if(initFlag==""){
         initBeta= Math.round(e.beta);
@@ -239,14 +251,14 @@ window.addEventListener("deviceorientation", (e) => {
         setTimeout(() => {
             if( ((beta-initBeta) > (maxX + offsetDeg)) || ((beta-initBeta) < (minX - offsetDeg)) ){
                 initBeta=beta;}
-        }, 1000);
+        }, 500);
     }
 
     if( ((gamma-initGamma) > (maxY + offsetDeg))  || ((gamma-initGamma) < (minY - offsetDeg)) ){
         setTimeout(() => {
             if( ((gamma-initGamma) > (maxY + offsetDeg))  || ((gamma-initGamma) < (minY - offsetDeg)) ){
                 initGamma=gamma;}
-        }, 1000);
+        }, 500);
     }
 
     beta= beta-initGamma;
@@ -264,24 +276,6 @@ window.addEventListener("deviceorientation", (e) => {
 
     console.log(initFlag,alpha, beta, gamma)
 }, true);
-
-// window.addEventListener("deviceorientation", (e) => {
-//     alpha = (e.alpha / 360);
-//     beta = (e.beta);
-//     gamma = (e.gamma);
-
-//     let x= beta;
-//     let y= gamma;
-
-//     // Limitaciones
-//     y= limitar(y, 20, -20);
-//     x= limitar(x, 20, -20);
-
-//     rootStyles.setProperty("--orientation-x", x);
-//     rootStyles.setProperty("--orientation-y", y);
-
-//     console.log(alpha, beta, gamma)
-// }, true);
 
 
 
