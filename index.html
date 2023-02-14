@@ -6,7 +6,12 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles.css">
+
+        <link rel="preload" as="styles" href="./styles.css">
+        <link rel="preload" as="script" href="./index.js">
+
+        
+        <link rel="stylesheet" href="./styles.css"/>
         
         <link rel="icon" type="image/png" href="./icon.png"/>
 
@@ -16,24 +21,21 @@
 
     </head>
     <body id="body">
-        <div id="wrap-loader">
-            <div id="loader">
-                <div id="circle-1"></div>
-                <div id="circle-2"></div>
+            <div id="wrap-loader">
+                <div id="loader">
+                    <div class="loader-bar"></div>
+                    <div class="loader-bar"></div>
+                    <div class="loader-bar"></div>
+                    <div class="loader-bar"></div>
+                    <div class="loader-bar"></div>
+                    <div class="loader-bar"></div>
+                    <div class="loader-bar"></div>
+                    <div class="loader-bar"> </div>
+                </div>
             </div>
-        </div>
-
-        
 
             <header id="header">
                 <navbar id="navbar">
-                    <!-- <div id="nav-text">
-                        <a target="_blank" id="profile-link"  href="https://linktr.ee/FranciscoRizzi">
-                            <h1>Francisco Rizzi
-                            <h2 id="subtitle">(Synthetica)</h2>
-                            </h1>
-                        </a>
-                    </div> -->
 
                     <a id="link-welcome-section" href="#welcome-section">My Portfolio</a>
             
@@ -62,10 +64,6 @@
                     </div>
                 </div>
             </header>
-            <!-- <div id="nav-pointer">
-                <div id="pointer"></div>
-            </div> -->
-
             
             <main id="main" class="main-content">
                 <section id="welcome-section" class="fullscreenScroll">
@@ -77,7 +75,7 @@
                         </div>
             
                 </section>
-                <!-- <section id="projects"></section> -->
+
                 <section id="landing-page" class="project-section fullscreenScroll">
                     <h1 class="project-title scrollFade-notVisible">Landing Product Page</h1>
                         <div class="project-frame scrollFade-notVisible">
@@ -124,15 +122,12 @@
                             </div>
                         </div>
                 </section>
-                    <!-- <div class="frame-wrap"><iframe class="project-tile" src="https://the-synthetica.github.io/Sophie-s-Album-Store/"></iframe></div> -->
-                    <!-- <div class="frame-wrap"><iframe class="project-tile" src=""></iframe></div> -->
             
                 <section id="about-me" class="project-section fullscreenScroll">
-                
                 </section>
             </main>
-
-        <script src="./index.js"></script>
+        
+        <script src="./index.js" defer></script>
         <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script>
 
     </body>
