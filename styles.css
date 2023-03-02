@@ -34,13 +34,13 @@ html{
 }
 
 /* Propiedades (variables personalizadas) */
-/* @property --angulo {
+@property --angulo {
     syntax: "<angle>";
     inherits: false;
     initial-value: 0deg;
-} */
+}
 
-/* @property --ColorAnimation1{
+@property --ColorAnimation1{
     syntax: "<color>";
     inherits: false;
     initial-value: rgb(255,0,255);
@@ -70,7 +70,7 @@ html{
     syntax: "<length>";
     inherits: false;
     initial-value: 7px;
-} */
+}
 
 
 
@@ -548,26 +548,11 @@ main{
     font-weight: 800;
 }
 #welcome-title{
-    
-    background: #000000;
-
-    background: linear-gradient(45deg,
-    var(--ColorAnimation1) 0%,
-    var(--ColorAnimation2) 50%,
-    var(--BGAnimation1) 50%,
-    var(--BGAnimation2) 100%);
-    
-    background: linear-gradient(var(--angulo),
-    var(--ColorAnimation1) 0%,
-    var(--ColorAnimation2) 50%,
-    var(--BGAnimation1) 50%,
-    var(--BGAnimation2) 100%);
-
-    background: conic-gradient( from var(--angulo),
-    var(--ColorAnimation1) 0%,
-    var(--ColorAnimation2) 50%,
-    var(--BGAnimation1) 50%,
-    var(--BGAnimation2) 100%);
+    background: conic-gradient( from 0deg,
+    #ff00ff 0%,
+    #00ffff 50%,
+    #000000 50%,
+    #ffffff 100%);
 
     background-clip: text;
     -webkit-background-clip: text;
@@ -579,7 +564,10 @@ main{
     backdrop-filter: blur(10px);
 
     /* animation: rotate 20s cubic-bezier(.11,.74,.81,.16) infinite; */
-    animation: rotate 20s cubic-bezier(.81,-0.99,.56,1.88) infinite;
+    /* animation: rotate 20s cubic-bezier(.81,-0.99,.56,1.88) infinite; */
+    animation:  rotateNoSyntax 2s cubic-bezier(.81,-0.99,.56,1.88) infinite;
+    -webkit-animation: rotateNoSyntax 2s cubic-bezier(.81,-0.99,.56,1.88) infinite;
+
 }
 #name{
     display: block;
@@ -681,9 +669,6 @@ main{
 
     background: linear-gradient(45deg, #230034, #0a0a00);
     background: -webkit-linear-gradient(45deg, #230034, #0a0a00);
-    background: linear-gradient(var(--angulo), #230034, #0a0a00);
-    
-    animation: rotate 20s cubic-bezier(.20,.80,.80,.20) infinite;
 }
 #documentation-page > h1{
     visibility: hidden;
@@ -700,7 +685,6 @@ main{
     0px 80px 40px 20px rgba(0,0,0,0.69) inset; */
 
 }
-
 #survey-page > h1{
     background: -webkit-linear-gradient(#eee, #333);
     -webkit-background-clip: text;
@@ -708,8 +692,274 @@ main{
     text-shadow: 0px 0px 10px rgba(255,255,255,0.5);
 }
 
+/* Calculator */
+#calculator{
+    background: linear-gradient(to left bottom, rgb(234, 179, 8), rgb(168, 85, 247), rgb(59, 130, 246));
+}
+#calculator > h1{
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+}
+#elementCalculator{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Plus{
+    width: 100px;
+    height: 100px;
+    background: #ffffff;
+    clip-path: polygon(0 35%, 0 65%, 35% 65%, 35% 100%, 65% 100%, 65% 65%, 100% 65%, 100% 35%, 65% 35%, 65% 0, 35% 0, 35% 35%);
+
+    position: absolute;
+    top: 100%;
+
+    animation: translate 2s linear forwards;
+
+    opacity: 0.77;
+    mix-blend-mode: multiply;
+    
+}
+.Minus{
+    width: 100px;
+    height: 100px;
+    background: #ffffff;
+    clip-path: polygon(85% 40%, 85% 60%, 15% 60%, 15% 40%);
+
+    position: absolute;
+    top: 100%;
+
+    animation: translate 2s linear forwards;
+
+    opacity: 0.77;
+    mix-blend-mode: multiply;
+}
+.Multiply{
+    width: 100px;
+    height: 100px;
+    background: #ffffff;
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+
+    position: absolute;
+    top: 100%;
+
+    animation: translate 2s linear forwards;
+
+    opacity: 0.77;
+    mix-blend-mode: multiply;
+    
+}
+.Divide{
+    width: 100px;
+    height: 100px;
+    background: #ffffff;
+    clip-path: polygon(75% 0, 100% 0, 25% 100%, 0 100%);
+
+    position: absolute;
+    top: 100%;
+
+    animation: translate 2s linear forwards;
+
+    opacity: 0.77;
+    mix-blend-mode: multiply;
+    
+}
+
+@keyframes translate{
+    0%{
+
+    }
+
+    100%{
+        top: -50%;
+        rotate: 0deg;
+    }
+}
+
+
+
+/* Conect4 */
+#connect4{
+    background: linear-gradient(to top right, rgb(00, 00, 22) 75%, rgb(20, 0, 50));
+}
+.wrap-element{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    overflow: hidden;
+
+    z-index: -1;
+}
+#elementConnect4{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.token1{
+    position: absolute;
+
+    width: 80px;
+    height: 80px;
+
+    clip-path: circle(50% at 50% 50%);
+    border-radius: 50%;
+
+    border: rgb(150, 0, 0) solid 5px;
+
+    bottom: -50%;
+    left: -20%;
+
+    background: radial-gradient(circle at center,rgb(200, 0, 0) 30%, red 40%, rgb(210, 0, 0) 50%);
+    
+    animation: move 2s linear;
+
+}
+.token2{
+    position: absolute;
+
+    width: 80px;
+    height: 80px;
+
+    clip-path: circle(50% at 50% 50%);
+    border-radius: 50%;
+
+    border: rgb(175, 175, 0) solid 5px;
+
+    bottom: -50%;
+    left: -0%;
+
+    background: radial-gradient(circle at center,rgb(200, 200, 0) 30%, yellow 40%, rgb(210, 210, 0) 50%);
+    
+    animation: move 2s linear;
+}
+
+@keyframes move{
+    0%{
+    }
+
+    100%{
+        bottom: 100%;
+        left: 100%;
+    }
+    
+}
+
+/* About Me */
+
 #about-me{
-    background-color: black;
+    /* background: linear-gradient(90deg, rgba(255,0,255,1) 0%, rgba(0,255,255,1) 100%); */
+    background: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+.section-wrap{
+    width: 100%;
+    height: 100%;
+
+    padding: 1rem;
+    padding-top: calc(var(--navbarHeight)*2.5);
+
+    left: 0;
+    top: 0;
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+
+    position: relative;
+}
+
+.about-me-title{
+    position: relative;
+    padding: 2rem;
+}
+
+.profile-icon{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    overflow: hidden;
+    animation: morph 20s cubic-bezier(.20,.80,.80,.20) infinite;
+}
+
+ .image::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 10px 0px rgba(255, 255, 255, 0.7);
+    /* backdrop-filter: invert(1); */
+    animation: morph 20s cubic-bezier(.20,.80,.80,.20) infinite;
+
+}
+
+.image::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+
+    box-shadow: 0 0 10px 0px rgba(255, 255, 255, 0.7);
+    scale: 1.05;
+    
+    animation: morph 10s cubic-bezier(.20,.80,.80,.20) infinite;
+}
+
+.image{
+    width: 40%;
+    position: relative;
+}
+
+
+/* @keyframes eye {
+    0%, 100%{
+        transform: translate(0,-1px);
+    }
+    25%{
+        transform: translate(7px,-1px);
+    }
+    50%{
+        transform: translate(0,-1px);
+    }
+    75%{
+        transform: translate(-7px, -1px);
+    }
+} */
+
+
+@keyframes morph {
+    0%, 100%{
+        border-radius: 
+        50% 70% 50% 50% /
+        50% 40% 70% 40%;
+    }
+
+    25%{
+        border-radius: 
+        70% 50% 50% 70% /
+        70% 50% 70% 50%;
+    }
+
+    75%{
+        border-radius: 
+            70% 80% 100% 70% /
+            80% 90% 100% 70%;
+        }
+
 }
 
 /* Media Querys */
@@ -779,6 +1029,47 @@ main{
         }
 }
 
+@supports( background: paint(something) ){
+
+    /* CSS si soporta la regla @property con animaciones */ 
+    #welcome-title{
+
+        background: red;
+
+        background: conic-gradient( from var(--angulo),
+        var(--ColorAnimation1) 0%,
+        var(--ColorAnimation2) 50%,
+        var(--BGAnimation1) 50%,
+        var(--BGAnimation2) 100%);
+
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    
+        background-size: 200% 200%;
+        background-position: center;
+    
+        backdrop-filter: blur(10px);
+    
+        /* animation: rotate 20s cubic-bezier(.11,.74,.81,.16) infinite; */
+        -webkit-animation: rotate 20s cubic-bezier(.11,.74,.81,.16) infinite;
+        animation: rotate 20s cubic-bezier(.81,-0.99,.56,1.88) infinite;
+    }
+
+
+    #documentation-page{
+        background: linear-gradient(var(--angulo), #230034, #0a0a00);
+        animation: rotate 20s cubic-bezier(.20,.80,.80,.20) infinite;
+    }
+
+    @media (pointer: fine){
+        #documentation-page{
+        background: linear-gradient(calc(var(--angulo) + var(--mouse-x) * 100deg), #230034, #0a0a00);
+        animation: rotate 20s cubic-bezier(.20,.80,.80,.20) infinite;
+        }
+    }
+    
+}
 
 
 /* Js Classes */
@@ -828,7 +1119,7 @@ main{
 
     /* background: linear-gradient(calc(var(--orientation-y) / 90 * 1deg), rgba(0,0,0,0) 30%, rgba(255,255,255,0.5) 50%, rgba(0,0,0,0) 70%); */
     background: linear-gradient(calc(var(--orientation-y) * 1deg), rgba(0,0,0,0) 30%, rgba(255,255,255,0.5) 50%, rgba(0,0,0,0) 70%);
-    
+
     opacity: 0.25;
     filter: blur(90px);
     
@@ -895,14 +1186,10 @@ main{
 #landing-page{
     background: rgb(15,10,11);
     background: linear-gradient(calc(var(--mouse-x) * -40deg + 20deg + 45deg), rgba(15,10,11,1) 0%, rgba(64,18,18,1) 25%, rgba(13,10,11,0.9755252442773985) 50%, rgba(64,18,18,1) 75%, rgba(15,10,11,1) 100%);
+
 }
 #survey-page{
     background: rgb(0, calc(var(--mouse-x) * 10 + 10), calc(var(--mouse-x) * 20 + 20));
-}
-#documentation-page{
-    background: linear-gradient(calc(var(--angulo) + var(--mouse-x) * 100deg), #230034, #0a0a00);
-    
-    animation: rotate 20s cubic-bezier(.20,.80,.80,.20) infinite;
 }
 
 .dropdown-content{
@@ -957,6 +1244,111 @@ main{
         --BGAnimation2:rgb(255, 255, 255);
     }
 }
+
+@keyframes rotateNoSyntax{
+    0%{ background: conic-gradient( from 0deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    1%{ background: conic-gradient( from 3.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    2%{ background: conic-gradient( from 7.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    3%{ background: conic-gradient( from 10.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    4%{ background: conic-gradient( from 14.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    5%{ background: conic-gradient( from 18deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    6%{ background: conic-gradient( from 21.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    7%{ background: conic-gradient( from 25.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    8%{ background: conic-gradient( from 28.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    9%{ background: conic-gradient( from 32.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    10%{ background: conic-gradient( from 36deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    11%{ background: conic-gradient( from 39.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    12%{ background: conic-gradient( from 43.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    13%{ background: conic-gradient( from 46.800000000000004deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    14%{ background: conic-gradient( from 50.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    15%{ background: conic-gradient( from 54deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    16%{ background: conic-gradient( from 57.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    17%{ background: conic-gradient( from 61.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    18%{ background: conic-gradient( from 64.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    19%{ background: conic-gradient( from 68.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    20%{ background: conic-gradient( from 72deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    21%{ background: conic-gradient( from 75.60000000000001deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    22%{ background: conic-gradient( from 79.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    23%{ background: conic-gradient( from 82.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    24%{ background: conic-gradient( from 86.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    25%{ background: conic-gradient( from 90deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    26%{ background: conic-gradient( from 93.60000000000001deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    27%{ background: conic-gradient( from 97.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    28%{ background: conic-gradient( from 100.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    29%{ background: conic-gradient( from 104.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    30%{ background: conic-gradient( from 108deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    31%{ background: conic-gradient( from 111.60000000000001deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    32%{ background: conic-gradient( from 115.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    33%{ background: conic-gradient( from 118.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    34%{ background: conic-gradient( from 122.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    35%{ background: conic-gradient( from 126deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    36%{ background: conic-gradient( from 129.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    37%{ background: conic-gradient( from 133.20000000000002deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    38%{ background: conic-gradient( from 136.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    39%{ background: conic-gradient( from 140.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    40%{ background: conic-gradient( from 144deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    41%{ background: conic-gradient( from 147.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    42%{ background: conic-gradient( from 151.20000000000002deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    43%{ background: conic-gradient( from 154.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    44%{ background: conic-gradient( from 158.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    45%{ background: conic-gradient( from 162deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    46%{ background: conic-gradient( from 165.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    47%{ background: conic-gradient( from 169.20000000000002deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    48%{ background: conic-gradient( from 172.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    49%{ background: conic-gradient( from 176.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    50%{ background: conic-gradient( from 180deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    51%{ background: conic-gradient( from 183.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    52%{ background: conic-gradient( from 187.20000000000002deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    53%{ background: conic-gradient( from 190.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    54%{ background: conic-gradient( from 194.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    55%{ background: conic-gradient( from 198deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    56%{ background: conic-gradient( from 201.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    57%{ background: conic-gradient( from 205.20000000000002deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    58%{ background: conic-gradient( from 208.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    59%{ background: conic-gradient( from 212.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    60%{ background: conic-gradient( from 216deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    61%{ background: conic-gradient( from 219.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    62%{ background: conic-gradient( from 223.20000000000002deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    63%{ background: conic-gradient( from 226.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    64%{ background: conic-gradient( from 230.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    65%{ background: conic-gradient( from 234deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    66%{ background: conic-gradient( from 237.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    67%{ background: conic-gradient( from 241.20000000000002deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    68%{ background: conic-gradient( from 244.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    69%{ background: conic-gradient( from 248.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    70%{ background: conic-gradient( from 252deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    71%{ background: conic-gradient( from 255.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    72%{ background: conic-gradient( from 259.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    73%{ background: conic-gradient( from 262.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    74%{ background: conic-gradient( from 266.40000000000003deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    75%{ background: conic-gradient( from 270deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    76%{ background: conic-gradient( from 273.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    77%{ background: conic-gradient( from 277.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    78%{ background: conic-gradient( from 280.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    79%{ background: conic-gradient( from 284.40000000000003deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    80%{ background: conic-gradient( from 288deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    81%{ background: conic-gradient( from 291.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    82%{ background: conic-gradient( from 295.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    83%{ background: conic-gradient( from 298.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    84%{ background: conic-gradient( from 302.40000000000003deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    85%{ background: conic-gradient( from 306deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    86%{ background: conic-gradient( from 309.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    87%{ background: conic-gradient( from 313.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    88%{ background: conic-gradient( from 316.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    89%{ background: conic-gradient( from 320.40000000000003deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    90%{ background: conic-gradient( from 324deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    91%{ background: conic-gradient( from 327.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    92%{ background: conic-gradient( from 331.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    93%{ background: conic-gradient( from 334.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    94%{ background: conic-gradient( from 338.40000000000003deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    95%{ background: conic-gradient( from 342deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    96%{ background: conic-gradient( from 345.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    97%{ background: conic-gradient( from 349.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    98%{ background: conic-gradient( from 352.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    99%{ background: conic-gradient( from 356.40000000000003deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    100%{ background: conic-gradient( from 360deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+}
+    
 
 /*Glitch Text Header*/
 .glitch{
@@ -1131,6 +1523,110 @@ main{
 }
 
 /* Safari Animation */
+
+@-webkit-keyframes rotateNoSyntax{
+    0%{ background: conic-gradient( from 0deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    1%{ background: conic-gradient( from 3.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    2%{ background: conic-gradient( from 7.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    3%{ background: conic-gradient( from 10.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    4%{ background: conic-gradient( from 14.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    5%{ background: conic-gradient( from 18deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    6%{ background: conic-gradient( from 21.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    7%{ background: conic-gradient( from 25.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    8%{ background: conic-gradient( from 28.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    9%{ background: conic-gradient( from 32.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    10%{ background: conic-gradient( from 36deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    11%{ background: conic-gradient( from 39.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    12%{ background: conic-gradient( from 43.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    13%{ background: conic-gradient( from 46.800000000000004deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    14%{ background: conic-gradient( from 50.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    15%{ background: conic-gradient( from 54deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    16%{ background: conic-gradient( from 57.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    17%{ background: conic-gradient( from 61.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    18%{ background: conic-gradient( from 64.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    19%{ background: conic-gradient( from 68.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    20%{ background: conic-gradient( from 72deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    21%{ background: conic-gradient( from 75.60000000000001deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    22%{ background: conic-gradient( from 79.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    23%{ background: conic-gradient( from 82.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    24%{ background: conic-gradient( from 86.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    25%{ background: conic-gradient( from 90deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    26%{ background: conic-gradient( from 93.60000000000001deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    27%{ background: conic-gradient( from 97.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    28%{ background: conic-gradient( from 100.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    29%{ background: conic-gradient( from 104.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    30%{ background: conic-gradient( from 108deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    31%{ background: conic-gradient( from 111.60000000000001deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    32%{ background: conic-gradient( from 115.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    33%{ background: conic-gradient( from 118.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    34%{ background: conic-gradient( from 122.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    35%{ background: conic-gradient( from 126deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    36%{ background: conic-gradient( from 129.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    37%{ background: conic-gradient( from 133.20000000000002deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    38%{ background: conic-gradient( from 136.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    39%{ background: conic-gradient( from 140.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    40%{ background: conic-gradient( from 144deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    41%{ background: conic-gradient( from 147.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    42%{ background: conic-gradient( from 151.20000000000002deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    43%{ background: conic-gradient( from 154.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    44%{ background: conic-gradient( from 158.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    45%{ background: conic-gradient( from 162deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    46%{ background: conic-gradient( from 165.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    47%{ background: conic-gradient( from 169.20000000000002deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    48%{ background: conic-gradient( from 172.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    49%{ background: conic-gradient( from 176.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    50%{ background: conic-gradient( from 180deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    51%{ background: conic-gradient( from 183.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    52%{ background: conic-gradient( from 187.20000000000002deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    53%{ background: conic-gradient( from 190.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    54%{ background: conic-gradient( from 194.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    55%{ background: conic-gradient( from 198deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    56%{ background: conic-gradient( from 201.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    57%{ background: conic-gradient( from 205.20000000000002deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    58%{ background: conic-gradient( from 208.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    59%{ background: conic-gradient( from 212.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    60%{ background: conic-gradient( from 216deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    61%{ background: conic-gradient( from 219.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    62%{ background: conic-gradient( from 223.20000000000002deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    63%{ background: conic-gradient( from 226.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    64%{ background: conic-gradient( from 230.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    65%{ background: conic-gradient( from 234deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    66%{ background: conic-gradient( from 237.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    67%{ background: conic-gradient( from 241.20000000000002deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    68%{ background: conic-gradient( from 244.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    69%{ background: conic-gradient( from 248.4deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    70%{ background: conic-gradient( from 252deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    71%{ background: conic-gradient( from 255.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    72%{ background: conic-gradient( from 259.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    73%{ background: conic-gradient( from 262.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    74%{ background: conic-gradient( from 266.40000000000003deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    75%{ background: conic-gradient( from 270deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    76%{ background: conic-gradient( from 273.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    77%{ background: conic-gradient( from 277.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    78%{ background: conic-gradient( from 280.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    79%{ background: conic-gradient( from 284.40000000000003deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    80%{ background: conic-gradient( from 288deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    81%{ background: conic-gradient( from 291.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    82%{ background: conic-gradient( from 295.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    83%{ background: conic-gradient( from 298.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    84%{ background: conic-gradient( from 302.40000000000003deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    85%{ background: conic-gradient( from 306deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    86%{ background: conic-gradient( from 309.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    87%{ background: conic-gradient( from 313.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    88%{ background: conic-gradient( from 316.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    89%{ background: conic-gradient( from 320.40000000000003deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    90%{ background: conic-gradient( from 324deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    91%{ background: conic-gradient( from 327.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    92%{ background: conic-gradient( from 331.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    93%{ background: conic-gradient( from 334.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    94%{ background: conic-gradient( from 338.40000000000003deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    95%{ background: conic-gradient( from 342deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    96%{ background: conic-gradient( from 345.6deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    97%{ background: conic-gradient( from 349.2deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    98%{ background: conic-gradient( from 352.8deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    99%{ background: conic-gradient( from 356.40000000000003deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+    100%{ background: conic-gradient( from 360deg , #ff00ff 0%, #00ffff 50%, #000000 50%, #ffffff 100%); background-clip: text; }
+}
 
 @-webkit-keyframes rotate{
     0%{

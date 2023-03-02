@@ -58,8 +58,11 @@ onresize = (event) => {
             rootStyles.setProperty('--scalar-x', scalarX);
             rootStyles.setProperty('--frame-height', frameHeight+"px");
 };
+
+page.style.overflow="hidden";
 onload = (event) => {
     console.log('loaded');
+    page.style.overflow="auto";
     
     setTimeout(() => { 
         loader.classList.toggle('loaded');
