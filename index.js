@@ -35,7 +35,7 @@ const circle2= document.getElementById('circle-2');
 
 // FullScreen Scrolled Sections
 let lastScrollTop= 0; let offsetHeight=10;
-let cont= 0; let flag=" ";
+let cont= 0, previousCont=-1; let flag=" ";
 let pointBar=((cont + 1) * (100 / fullscreenScrolls.length));
 
 // NavPointer
@@ -45,6 +45,8 @@ let prop= (100 - pointBar)  + '%';
 // Progress Bar nav
 const bar= document.getElementById('nav-progress-bar');
 const barLinks= document.getElementsByClassName('bar-link');
+
+
 
 
 initialize();
@@ -67,8 +69,6 @@ onload = (event) => {
     setTimeout(() => { 
         loader.classList.toggle('loaded');
         
-        // circle1.classList.toggle('circle1-loaded');
-        // circle2.classList.toggle('circle2-loaded');
     },  500);
 
     setTimeout(() => { 
@@ -96,59 +96,6 @@ function initialize(){
             rootStyles.setProperty('--scalar-x', scalarX);
             rootStyles.setProperty('--frame-height', frameHeight+"px");
 
-    // Properties
-    
-    
-    
-    // window.CSS.registerProperty({
-    //     name:'--angulo',
-    //     syntax: "<angle>",
-    //     inherits: false,
-    //     initialValue: '0deg',
-    // });
-
-    // window.CSS.registerProperty({
-    //     name:'--ColorAnimation1',
-    //     syntax: "<color>",
-    //     inherits: false,
-    //     initialValue: 'rgb(255,0,255)',
-    // });
-
-    // window.CSS.registerProperty({
-    //     name:'--ColorAnimation2',
-    //     syntax: "<color>",
-    //     inherits: false,
-    //     initialValue: 'rgb(0,255,255)',
-    // });
-
-    // window.CSS.registerProperty({
-    //     name:'--BGAnimation1',
-    //     syntax: "<color>",
-    //     inherits: false,
-    //     initialValue: 'rgb(51, 55, 85)',
-    // });
-
-    // window.CSS.registerProperty({
-    //     name:'--BGAnimation2',
-    //     syntax: "<color>",
-    //     inherits: false,
-    //     initialValue: 'rgb(51, 55, 85)',
-    // });
-
-    // window.CSS.registerProperty({
-    //     name:'--length1',
-    //     syntax: "<length>",
-    //     inherits: false,
-    //     initialValue: '0px',
-    // });
-
-    // window.CSS.registerProperty({
-    //     name:'--length2',
-    //     syntax: "<length>",
-    //     inherits: false,
-    //     initialValue: '7px',
-    // });
-    
 }
 
 function cargarElemento (entradas, observer){
@@ -172,15 +119,36 @@ function limitar( a, max, min){
 
     return a;
 }
-function barChange(cont, flag){
+function isInViewport(elem) {
+    // var distance = elem.getBoundingClientRect();
+    // return (
+    //     distance.top < (window.innerHeight || document.documentElement.clientHeight) && distance.bottom > window.innerHeight/2
+    // );
+
+    let offsetTop= elem.offsetTop;
+    let offsetScroll= Math.round(docmain.scrollTop);
+
+    if(offsetTop == offsetScroll)
+        return true;
+
+    return false;
+}
+function barChange(cont){
     pointBar=((cont + 1) * (100 / fullscreenScrolls.length));
     prop= (100 - pointBar)  + '%';
     // pointer.style.right= prop;
 
+    if(cont > previousCont){
+        flag="abajo";
+    }
+
+    if(cont < previousCont){
+        flag="arriba";
+    }
+
     if (cont > 0){
         bar.style.top= "var(--navbarHeight)";
 
-        // barLinks[cont-1].style.color="blue";
         for(let i=0; i<barLinks.length; i++)
         barLinks[i].classList.remove('bar-link-focused');
 
@@ -222,10 +190,10 @@ function createCalculator(){
     newDiv3.classList.add('Multiply');
     newDiv4.classList.add('Divide');
 
-    const offsetLeft1= randomInterval(0, 100);
-    const offsetLeft2= randomInterval(0, 100);
-    const offsetLeft3= randomInterval(0, 100);
-    const offsetLeft4= randomInterval(0, 100);
+    const offsetLeft1= randomInterval(-10, 100);
+    const offsetLeft2= randomInterval(-10, 100);
+    const offsetLeft3= randomInterval(-10, 100);
+    const offsetLeft4= randomInterval(-10, 100);
 
     const animationTime= randomInterval(2, 5);
     const animationTime2= randomInterval(2, 5);
@@ -317,7 +285,99 @@ function createConnect4(){
 function randomInterval(min, max) {
     return (Math.random() * (max - min + 1) + min)
 }
+// Animation Liquid
+const elementLiquid= document.getElementById('elementLiquidRelax');
+setInterval(() => { createLiquid() }, 700);
 
+function createLiquid(){
+    const newDiv1= document.createElement('div');
+    const newDiv2= document.createElement('div');
+    const newDiv3= document.createElement('div');
+    const newDiv4= document.createElement('div');
+
+    newDiv1.classList.add('liquidCircle1');
+    newDiv2.classList.add('liquidCircle2');
+    newDiv3.classList.add('liquidCircle1');
+    newDiv4.classList.add('liquidCircle2');
+
+    const offsetLeft1= randomInterval(-10, 10);
+    const offsetLeft2= randomInterval(-10, 10);
+
+    const animationTime= randomInterval(5, 7);
+    const animationTime2= randomInterval(5, 7);
+
+    newDiv1.style.left= offsetLeft1 + '%';
+    newDiv3.style.left= offsetLeft1 + '%';
+    newDiv2.style.right= offsetLeft2 + '%';
+    newDiv4.style.right= offsetLeft2 + '%';
+
+    newDiv1.style.animation= 'liquidMove ' + animationTime + 's' + ' linear forwards';
+    newDiv3.style.animation= 'liquidMove ' + animationTime2 + 's' + ' linear forwards';
+    newDiv2.style.animation= 'liquidMove ' + animationTime2 + 's' + ' linear forwards';
+    newDiv4.style.animation= 'liquidMove ' + animationTime + 's' + ' linear forwards';
+    
+    elementLiquid.appendChild(newDiv1);
+    elementLiquid.appendChild(newDiv2);
+    elementLiquid.appendChild(newDiv3);
+    elementLiquid.appendChild(newDiv4);
+
+    setTimeout(() => {
+        elementLiquid.removeChild(newDiv1)
+        elementLiquid.removeChild(newDiv4)
+    }, animationTime * 1000);
+
+    setTimeout(() => {
+        elementLiquid.removeChild(newDiv2)
+        elementLiquid.removeChild(newDiv3)
+    }, animationTime2 * 1000);
+}
+
+// Animation LiquidAboutMe
+const elementAboutMe= document.getElementById('elementAboutMe');
+setInterval(() => { createLiquidAboutMe() }, 700);
+
+function createLiquidAboutMe(){
+    const newDiv1= document.createElement('div');
+    const newDiv2= document.createElement('div');
+    const newDiv3= document.createElement('div');
+    const newDiv4= document.createElement('div');
+
+    newDiv2.classList.add('liquidAboutMeCircle2');
+    newDiv3.classList.add('liquidAboutMeCircle1');
+    newDiv4.classList.add('liquidAboutMeCircle2');
+    newDiv1.classList.add('liquidAboutMeCircle1');
+
+    const offsetLeft1= randomInterval(-10, 10);
+    const offsetLeft2= randomInterval(-10, 10);
+
+    const animationTime= randomInterval(5, 7);
+    const animationTime2= randomInterval(5, 7);
+
+    newDiv1.style.left= offsetLeft1 + '%';
+    newDiv3.style.left= offsetLeft1 + '%';
+    newDiv2.style.right= offsetLeft2 + '%';
+    newDiv4.style.right= offsetLeft2 + '%';
+
+    newDiv1.style.animation= 'liquidMove ' + animationTime + 's' + ' linear forwards';
+    newDiv3.style.animation= 'liquidMove ' + animationTime2 + 's' + ' linear forwards';
+    newDiv2.style.animation= 'liquidMove ' + animationTime2 + 's' + ' linear forwards';
+    newDiv4.style.animation= 'liquidMove ' + animationTime + 's' + ' linear forwards';
+    
+    elementAboutMe.appendChild(newDiv1);
+    elementAboutMe.appendChild(newDiv2);
+    elementAboutMe.appendChild(newDiv3);
+    elementAboutMe.appendChild(newDiv4);
+
+    setTimeout(() => {
+        elementAboutMe.removeChild(newDiv1)
+        elementAboutMe.removeChild(newDiv4)
+    }, animationTime * 1000);
+
+    setTimeout(() => {
+        elementAboutMe.removeChild(newDiv2)
+        elementAboutMe.removeChild(newDiv3)
+    }, animationTime2 * 1000);
+}
 
 //Card Follows cursor
 window.addEventListener("mousemove", (e) => {
@@ -384,38 +444,34 @@ window.addEventListener("deviceorientation", (e) => {
     console.log(initFlag,alpha, beta, gamma)
 }, true);
 
-for(let i=0; i<barLinks.length; i++){
-    barLinks[i].addEventListener('click', () =>{
-    fullscreenScrolls[cont].style.top= "100vh";
-    fullscreenScrolls[cont].style.opacity= "0";
+// for(let i=0; i<barLinks.length; i++){
+//     barLinks[i].addEventListener('click', () =>{
+//     // fullscreenScrolls[cont].style.top= "100vh";
+//     // fullscreenScrolls[cont].style.opacity= "0";
 
-    cont=i+1;
-    barChange(cont, "");
+//     cont=i+1;
+//     console.log(cont)
     
-    fullscreenScrolls[cont].style.top= "0";
-    fullscreenScrolls[cont].style.opacity= "1";
-
-    bar.scrollTo(0,0);
-
-    let dist=0;
-    for(let i=0; i<cont-1; i++){
-        dist+=barLinks[i].offsetWidth + 30;
-    }
-
-    bar.scrollTo(dist, 0);
-
-    page.style.overflow="hidden";
+//     flag="stop";
+//     barChange(cont);
     
-    setTimeout(() => { 
-        flag = " ";
-        page.style.overflow="auto";
-    }, 1000);
+//     // fullscreenScrolls[cont].style.top= "0";
+//     // fullscreenScrolls[cont].style.opacity= "1";
 
-    flag="stop";
+//     bar.scrollTo(0,0);
+
+//     let dist=0;
+//     for(let i=0; i<cont-1; i++){
+//         dist+=barLinks[i].offsetWidth + 30;
+//     }
+
+//     bar.scrollTo(dist, 0);
     
-    window.scrollTo(0, main.offsetHeight / 4);
-    })
-}
+//         // docmain.removeEventListener('scroll', scrollHandler);
+//     // window.scrollTo(0, main.offsetHeight / 4);
+
+//     })
+// }
 
 // barLinks[0].addEventListener('click', e => {
 //     fullscreenScrolls[cont].style.top= "100vh";
@@ -551,92 +607,6 @@ for(let i=0; i<barLinks.length; i++){
 // }, false);
 
 linkWelcomeSection.addEventListener('click', e => {
-    fullscreenScrolls[cont].style.top= "100vh";
-    fullscreenScrolls[cont].style.opacity= "0";
-
-    cont=0;
-    barChange(cont, flag)
-    for(let i=0; i<barLinks.length; i++)
-    barLinks[i].classList.remove('bar-link-focused');
-    
-    fullscreenScrolls[cont].style.top= "0";
-    fullscreenScrolls[cont].style.opacity= "1";
-
-    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
-    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
-    bar.scrollTo(0, 0);
-
-    let dist=0;
-    for(let i=0; i<cont-1; i++){
-        dist+=barLinks[i].offsetWidth + 30;
-    }
-
-    bar.scrollTo(dist, 0);
-
-    page.style.overflow="hidden";
-    
-    setTimeout(() => { 
-        flag = " ";
-        page.style.overflow="auto";
-    }, 1000);
-
-    flag="stop";
-    
-    window.scrollTo(0, main.offsetHeight / 4);
-}, false);
-
-// FullScreen Scrolled Sections
-window.addEventListener('scroll', e => {
-    let actualScrollTop = html.scrollTop;
-
-        if ((actualScrollTop > (lastScrollTop + offsetHeight)) && (flag===" ") && (cont < (fullscreenScrolls.length - 1))){
-            fullscreenScrolls[cont].style.top= "100vh";
-            fullscreenScrolls[cont].style.opacity= "0";
-
-
-            cont++;
-                page.style.overflow="hidden";
-                
-
-            setTimeout(() => { 
-                flag = " ";
-                page.style.overflow="auto";
-            }, 1000);
-
-            flag="abajo";
-
-                barChange(cont, flag);
-
-            fullscreenScrolls[cont].style.top= "0";
-            fullscreenScrolls[cont].style.opacity= "1";
-            
-            window.scrollTo(0, main.offsetHeight / 4);
-        } 
-
-        else if((actualScrollTop < (lastScrollTop - offsetHeight)) && (flag===" ") && (cont > 0)){
-            fullscreenScrolls[cont].style.top= "100vh";
-            fullscreenScrolls[cont].style.opacity= "0";
-            cont--;
-                page.style.overflow="hidden";
-                
-                barChange(cont, flag);
-
-            setTimeout(() => { 
-                flag = " ";
-                page.style.overflow="auto";
-            }, 1000);
-            
-            flag="arriba";
-            
-                barChange(cont, flag);
-
-            fullscreenScrolls[cont].style.top= "0";
-            fullscreenScrolls[cont].style.opacity= "1";
-
-            window.scrollTo(0, main.offsetHeight / 4);
-        }
-
-    lastScrollTop = actualScrollTop;
 });
 
 
@@ -649,3 +619,31 @@ for (var i = 0; i < burgerMenuLinks.length; i++) {
 for(var i=0; i < scrollNotVisible.length; i++) {
     observer.observe(scrollNotVisible[i]);
 }
+
+const docmain= document.querySelector('main');
+docmain.addEventListener('scroll', () => {scrollHandler()});
+
+function scrollHandler(){
+    for(let i=0; i<fullscreenScrolls.length; i++){
+        // console.log(fullscreenScrolls[i].offsetTop, Math.round(docmain.scrollTop));
+        // if(isInViewport(fullscreenScrolls[i])){
+        if((Math.round(docmain.scrollTop) == fullscreenScrolls[i].offsetTop)){
+            
+            if(i != previousCont){
+                cont=i;
+                console.log('element', i);
+                barChange(cont);
+                
+                previousCont= cont;
+            }
+
+            break;
+        }
+    }
+}
+
+const buttonAboutMe= document.getElementById('buttonAboutMe');
+
+buttonAboutMe.addEventListener('click', () => {
+    burgerCheckbox.click();
+})
