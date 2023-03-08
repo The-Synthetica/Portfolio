@@ -217,10 +217,10 @@ function createCalculator(){
     newDiv3.style.left= offsetLeft3 + '%';
     newDiv4.style.left= offsetLeft4 + '%';
 
-    newDiv1.style.rotate= rotation + 'deg';
-    newDiv2.style.rotate= rotation2 + 'deg';
-    newDiv3.style.rotate= rotation3 + 'deg';
-    newDiv4.style.rotate= rotation4 + 'deg';
+    newDiv1.style.transform= 'rotate(' + rotation + 'deg' + ')';
+    newDiv2.style.transform= 'rotate(' + rotation2 + 'deg' + ')';
+    newDiv3.style.transform= 'rotate(' + rotation3 + 'deg' + ')';
+    newDiv4.style.transform= 'rotate(' + rotation4 + 'deg' + ')';
 
     newDiv1.style.animation= 'translate ' + animationTime + 's' + ' linear';
     newDiv2.style.animation= 'translate ' + animationTime2 + 's' + ' linear';

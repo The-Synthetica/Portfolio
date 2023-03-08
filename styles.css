@@ -960,7 +960,7 @@ main{
 
     width: 100%;
     height: fit-content;
-    
+
     padding: 1rem;
     color: white;
 
@@ -1331,6 +1331,14 @@ main{
     transform: translateX(0px) translateY(0px);
 
     transition: opacity 0.5s ease-in-out 0.5s, transform 0.3s ease-in-out 0.5s;
+}
+
+.scrollFade-notVisible > *{
+    visibility: hidden;
+}
+
+.scrollFade-Visible > *{
+    visibility: visible;
 }
 
 /* Gyroscopyc 3d animated Card */
@@ -1775,7 +1783,7 @@ main{
 
     100%{
         top: -50%;
-        rotate: 0deg;
+        transform: rotate(0deg);
     }
 }
 
