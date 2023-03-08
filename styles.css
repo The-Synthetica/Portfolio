@@ -666,7 +666,7 @@ main{
 #landing-page{
     background: rgb(15,10,11);
     background: linear-gradient(45deg, rgba(15,10,11,1) 0%, rgba(64,18,18,1) 25%, rgba(13,10,11,0.9755252442773985) 50%, rgba(64,18,18,1) 75%, rgba(15,10,11,1) 100%);
-    background: linear-gradient(calc(var(--orientation-y) * 1deg + 45deg), rgba(15,10,11,1) 0%, rgba(64,18,18,1) 25%, rgba(13,10,11,0.9755252442773985) 50%, rgba(64,18,18,1) 75%, rgba(15,10,11,1) 100%);
+    /* background: linear-gradient(calc(var(--orientation-y) * 1deg + 45deg), rgba(15,10,11,1) 0%, rgba(64,18,18,1) 25%, rgba(13,10,11,0.9755252442773985) 50%, rgba(64,18,18,1) 75%, rgba(15,10,11,1) 100%); */
 
     text-shadow: 0 0 10px rgba(80, 0, 100, 1);
     box-shadow: 0px 0px 100px 0px rgba(0,0,0,0.7) inset;
@@ -869,8 +869,8 @@ main{
 .liquidCircle1{
     position: absolute;
 
-    width: 75px;
-    height: 75px;
+    width: 100px;
+    height: 100px;
 
     filter: blur(25px);
 
@@ -883,7 +883,7 @@ main{
 
     z-index: 1;
     
-    animation: liquidMove 5s linear forwards;
+    animation: liquidMove 7s linear forwards;
 }
 
 .liquidCircle2{
@@ -1350,11 +1350,11 @@ main{
 }
 .follow-card{
     
-    /* --rotateY:calc( var(--orientation-y) * 1deg);
-    --rotateX:calc( var(--orientation-x) / 50 * 20deg); */
+    /* --rotateY: calc(var(--orientation-y) * 1deg);
+    --rotateX: calc(var(--orientation-x) * 1deg); */
 
-    --rotateY: calc(var(--orientation-y) * 1deg);
-    --rotateX: calc(var(--orientation-x) * 1deg);
+    --rotateY: calc(-20 * 1deg);
+    --rotateX: calc(20 * 1deg);
 
     transform: rotateX(var(--rotateX))
                rotateY(var(--rotateY));
@@ -1363,17 +1363,13 @@ main{
 
 }
 .follow-card::before{
-    
-    /* --rotateY:calc( var(--orientation-y) / 50 * 20deg);
-    --rotateX:calc( var(--orientation-x) / 50 * 20deg); */
-
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     z-index: 1;
 
     /* background: linear-gradient(calc(var(--orientation-y) / 90 * 1deg), rgba(0,0,0,0) 30%, rgba(255,255,255,0.5) 50%, rgba(0,0,0,0) 70%); */
-    background: linear-gradient(calc(var(--orientation-y) * 1deg), rgba(0,0,0,0) 30%, rgba(255,255,255,0.5) 50%, rgba(0,0,0,0) 70%);
+    background: linear-gradient(calc(-20 * 1deg), rgba(0,0,0,0) 30%, rgba(255,255,255,0.5) 50%, rgba(0,0,0,0) 70%);
 
     opacity: 0.25;
     filter: blur(90px);

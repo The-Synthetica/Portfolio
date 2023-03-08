@@ -337,8 +337,8 @@ function createLiquidAboutMe(){
     newDiv4.classList.add('liquidAboutMeCircle2');
     newDiv1.classList.add('liquidAboutMeCircle1');
 
-    const offsetLeft1= randomInterval(-10, 10);
-    const offsetLeft2= randomInterval(-10, 10);
+    const offsetLeft1= randomInterval(-10, 40);
+    const offsetLeft2= randomInterval(-10, 40);
 
     const animationTime= randomInterval(5, 7);
     const animationTime2= randomInterval(5, 7);
@@ -386,7 +386,7 @@ setInterval(() => {
         itcont= 0;
     }
 
-}, 250);
+}, 500);
 
 
 //Card Follows cursor
@@ -399,60 +399,6 @@ window.addEventListener("mousemove", (e) => {
     (e.clientY / window.innerHeight));
 
 }, false);
-
-//mobile gyroscope version
-let betaAnt=0;
-let gammaAnt=0;
-
-let initFlag="",
-    initBeta=0,
-    initGamma=0;
-
-let offsetDeg= 5;
-
-let minY=-5, maxY=2;
-let minX=-20, maxX=20;
-
-// window.addEventListener("deviceorientation", (e) => {
-//     if(initFlag==""){
-//         initBeta= Math.round(e.beta);
-//         initGamma= Math.round(e.gamma);
-//         initFlag="iniciado"
-//     }
-    
-//     let alpha = Math.round(e.alpha);
-//     let beta = Math.round(e.beta);
-//     let gamma = Math.round(e.gamma);
-
-//     if( ((beta-initBeta) > (maxX + offsetDeg)) || ((beta-initBeta) < (minX - offsetDeg)) ){
-//         setTimeout(() => {
-//             if( ((beta-initBeta) > (maxX + offsetDeg)) || ((beta-initBeta) < (minX - offsetDeg)) ){
-//                 initBeta=beta;}
-//         }, 500);
-//     }
-
-//     if( ((gamma-initGamma) > (maxY + offsetDeg))  || ((gamma-initGamma) < (minY - offsetDeg)) ){
-//         setTimeout(() => {
-//             if( ((gamma-initGamma) > (maxY + offsetDeg))  || ((gamma-initGamma) < (minY - offsetDeg)) ){
-//                 initGamma=gamma;}
-//         }, 500);
-//     }
-
-//     beta= beta-initGamma;
-//     gamma= gamma-initGamma;
-
-//     let y= gamma;
-//     let x= beta;
-
-//     // Limitaciones
-//     y= limitar(y, maxY, minY);
-//     x= limitar(x, maxX, minX);
-
-//     rootStyles.setProperty("--orientation-x", x);
-//     rootStyles.setProperty("--orientation-y", y);
-
-//     console.log(initFlag,alpha, beta, gamma)
-// }, true);
 
 linkWelcomeSection.addEventListener('click', e => {
 });
