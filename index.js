@@ -46,7 +46,17 @@ let prop= (100 - pointBar)  + '%';
 const bar= document.getElementById('nav-progress-bar');
 const barLinks= document.getElementsByClassName('bar-link');
 
+//Animation Calculator
+const elementCalculator= document.getElementById('elementCalculator');
 
+// Animation Connect4
+const elementConnect4= document.getElementById('elementConnect4');
+
+// Animation Liquid
+const elementLiquid= document.getElementById('elementLiquidRelax');
+
+// Animation LiquidAboutMe
+const elementAboutMe= document.getElementById('elementAboutMe');
 
 
 initialize();
@@ -97,7 +107,6 @@ function initialize(){
             rootStyles.setProperty('--frame-height', frameHeight+"px");
 
 }
-
 function cargarElemento (entradas, observer){
 
     entradas.forEach( (entrada) => {
@@ -174,11 +183,9 @@ function barChange(cont){
 
 
 }
-
-//Animation Calculator
-const elementCalculator= document.getElementById('elementCalculator');
-setInterval(() => { createCalculator() }, 250);
-
+function randomInterval(min, max) {
+    return (Math.random() * (max - min + 1) + min)
+}
 function createCalculator(){
     const newDiv1= document.createElement('div');
     const newDiv2= document.createElement('div');
@@ -241,54 +248,6 @@ function createCalculator(){
         elementCalculator.removeChild(newDiv4)
     }, animationTime4 * 1000);
 }
-
-// Animation Connect4
-const elementConnect4= document.getElementById('elementConnect4');
-setInterval(() => { createConnect4() }, 250);
-
-function createConnect4(){
-    const newDiv1= document.createElement('div');
-    const newDiv2= document.createElement('div');
-
-    newDiv1.classList.add('token1');
-    newDiv2.classList.add('token2');
-
-    const offsetLeft1= randomInterval(-50, 50);
-    const offsetLeft2= randomInterval(-50, 50);
-    
-    const offsetBottom1= randomInterval(25, 100);
-    const offsetBottom2= randomInterval(25, 100);
-
-    const animationTime= randomInterval(2, 5);
-    const animationTime2= randomInterval(2, 5);
-
-    newDiv1.style.left= offsetLeft1 + '%';
-    newDiv2.style.left= offsetLeft2 + '%';
-
-    newDiv1.style.bottom= ' -' + offsetBottom1 + '%';
-    newDiv2.style.bottom= ' -' + offsetBottom2 + '%';
-
-    newDiv1.style.animation= 'move ' + animationTime + 's' + ' linear';
-    newDiv2.style.animation= 'move ' + animationTime2 + 's' + ' linear';
-    
-    elementConnect4.appendChild(newDiv1);
-    elementConnect4.appendChild(newDiv2);
-
-    setTimeout(() => {
-        elementConnect4.removeChild(newDiv1)
-    }, animationTime * 1000);
-
-    setTimeout(() => {
-        elementConnect4.removeChild(newDiv2)
-    }, animationTime2 * 1000);
-}
-function randomInterval(min, max) {
-    return (Math.random() * (max - min + 1) + min)
-}
-// Animation Liquid
-const elementLiquid= document.getElementById('elementLiquidRelax');
-setInterval(() => { createLiquid() }, 700);
-
 function createLiquid(){
     const newDiv1= document.createElement('div');
     const newDiv2= document.createElement('div');
@@ -331,11 +290,42 @@ function createLiquid(){
         elementLiquid.removeChild(newDiv3)
     }, animationTime2 * 1000);
 }
+function createConnect4(){
+    const newDiv1= document.createElement('div');
+    const newDiv2= document.createElement('div');
 
-// Animation LiquidAboutMe
-const elementAboutMe= document.getElementById('elementAboutMe');
-setInterval(() => { createLiquidAboutMe() }, 700);
+    newDiv1.classList.add('token1');
+    newDiv2.classList.add('token2');
 
+    const offsetLeft1= randomInterval(-50, 50);
+    const offsetLeft2= randomInterval(-50, 50);
+    
+    const offsetBottom1= randomInterval(25, 100);
+    const offsetBottom2= randomInterval(25, 100);
+
+    const animationTime= randomInterval(2, 5);
+    const animationTime2= randomInterval(2, 5);
+
+    newDiv1.style.left= offsetLeft1 + '%';
+    newDiv2.style.left= offsetLeft2 + '%';
+
+    newDiv1.style.bottom= ' -' + offsetBottom1 + '%';
+    newDiv2.style.bottom= ' -' + offsetBottom2 + '%';
+
+    newDiv1.style.animation= 'move ' + animationTime + 's' + ' linear';
+    newDiv2.style.animation= 'move ' + animationTime2 + 's' + ' linear';
+    
+    elementConnect4.appendChild(newDiv1);
+    elementConnect4.appendChild(newDiv2);
+
+    setTimeout(() => {
+        elementConnect4.removeChild(newDiv1)
+    }, animationTime * 1000);
+
+    setTimeout(() => {
+        elementConnect4.removeChild(newDiv2)
+    }, animationTime2 * 1000);
+}
 function createLiquidAboutMe(){
     const newDiv1= document.createElement('div');
     const newDiv2= document.createElement('div');
@@ -378,6 +368,26 @@ function createLiquidAboutMe(){
         elementAboutMe.removeChild(newDiv3)
     }, animationTime2 * 1000);
 }
+
+let itcont= 0;
+setInterval(() => {
+    itcont++;
+        if((Math.round(docmain.scrollTop) == fullscreenScrolls[4].offsetTop))
+            createCalculator()
+        if((Math.round(docmain.scrollTop) == fullscreenScrolls[5].offsetTop))
+            createConnect4()
+
+    if(itcont>=3){
+        if((Math.round(docmain.scrollTop) == fullscreenScrolls[6].offsetTop))
+            createLiquid()
+        if((Math.round(docmain.scrollTop) == fullscreenScrolls[7].offsetTop))
+            createLiquidAboutMe()
+
+        itcont= 0;
+    }
+
+}, 250);
+
 
 //Card Follows cursor
 window.addEventListener("mousemove", (e) => {
@@ -443,168 +453,6 @@ window.addEventListener("deviceorientation", (e) => {
 
     console.log(initFlag,alpha, beta, gamma)
 }, true);
-
-// for(let i=0; i<barLinks.length; i++){
-//     barLinks[i].addEventListener('click', () =>{
-//     // fullscreenScrolls[cont].style.top= "100vh";
-//     // fullscreenScrolls[cont].style.opacity= "0";
-
-//     cont=i+1;
-//     console.log(cont)
-    
-//     flag="stop";
-//     barChange(cont);
-    
-//     // fullscreenScrolls[cont].style.top= "0";
-//     // fullscreenScrolls[cont].style.opacity= "1";
-
-//     bar.scrollTo(0,0);
-
-//     let dist=0;
-//     for(let i=0; i<cont-1; i++){
-//         dist+=barLinks[i].offsetWidth + 30;
-//     }
-
-//     bar.scrollTo(dist, 0);
-    
-//         // docmain.removeEventListener('scroll', scrollHandler);
-//     // window.scrollTo(0, main.offsetHeight / 4);
-
-//     })
-// }
-
-// barLinks[0].addEventListener('click', e => {
-//     fullscreenScrolls[cont].style.top= "100vh";
-//     fullscreenScrolls[cont].style.opacity= "0";
-
-//     cont=1;
-//     barChange(cont, "");
-    
-//     fullscreenScrolls[cont].style.top= "0";
-//     fullscreenScrolls[cont].style.opacity= "1";
-
-//     // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
-//     // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
-//     // bar.scrollTo((cont-1)*200, 0);
-//     bar.scrollTo(0,0);
-
-//     let dist=0;
-//     for(let i=0; i<cont-1; i++){
-//         dist+=barLinks[i].offsetWidth + 30;
-//     }
-
-//     bar.scrollTo(dist, 0);
-
-//     page.style.overflow="hidden";
-    
-//     setTimeout(() => { 
-//         flag = " ";
-//         page.style.overflow="auto";
-//     }, 1000);
-
-//     flag="stop";
-    
-//     window.scrollTo(0, main.offsetHeight / 4);
-// }, false);
-
-// barLinks[1].addEventListener('click', e => {
-//     fullscreenScrolls[cont].style.top= "100vh";
-//     fullscreenScrolls[cont].style.opacity= "0";
-
-//     cont=2;
-//     barChange(cont, "");
-    
-//     fullscreenScrolls[cont].style.top= "0";
-//     fullscreenScrolls[cont].style.opacity= "1";
-
-//     // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
-//     // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
-//     bar.scrollTo(0, 0);
-
-//     let dist=0;
-//     for(let i=0; i<cont-1; i++){
-//         dist+=barLinks[i].offsetWidth + 30;
-//     }
-
-//     bar.scrollTo(dist, 0);
-
-//     page.style.overflow="hidden";
-    
-//     setTimeout(() => { 
-//         flag = " ";
-//         page.style.overflow="auto";
-//     }, 1000);
-
-//     flag="stop";
-    
-//     window.scrollTo(0, main.offsetHeight / 4);
-// }, false);
-
-// barLinks[2].addEventListener('click', e => {
-//     fullscreenScrolls[cont].style.top= "100vh";
-//     fullscreenScrolls[cont].style.opacity= "0";
-
-//     cont=3;
-//     barChange(cont, "");
-    
-//     fullscreenScrolls[cont].style.top= "0";
-//     fullscreenScrolls[cont].style.opacity= "1";
-
-//     // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
-//     // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
-//     bar.scrollTo(0, 0);
-
-//     let dist=0;
-//     for(let i=0; i<cont-1; i++){
-//         dist+=barLinks[i].offsetWidth + 30;
-//     }
-
-//     bar.scrollTo(dist, 0);
-
-//     page.style.overflow="hidden";
-    
-//     setTimeout(() => { 
-//         flag = " ";
-//         page.style.overflow="auto";
-//     }, 1000);
-
-//     flag="stop";
-    
-//     window.scrollTo(0, main.offsetHeight / 4);
-// }, false);
-
-// barLinks[3].addEventListener('click', e => {
-//     fullscreenScrolls[cont].style.top= "100vh";
-//     fullscreenScrolls[cont].style.opacity= "0";
-
-//     cont=4;
-//     barChange(cont, "");
-    
-//     fullscreenScrolls[cont].style.top= "0";
-//     fullscreenScrolls[cont].style.opacity= "1";
-
-//     // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
-//     // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
-//     bar.scrollTo(0, 0);
-
-//     let dist=0;
-//     for(let i=0; i<cont-1; i++){
-//         dist+=barLinks[i].offsetWidth + 30;
-//     }
-
-//     bar.scrollTo(dist, 0);
-
-//     page.style.overflow="hidden";
-    
-//     setTimeout(() => { 
-//         flag = " ";
-//         page.style.overflow="auto";
-//     }, 1000);
-
-//     flag="stop";    
-    
-//     window.scrollTo(0, main.offsetHeight / 4);
-// }, false);
 
 linkWelcomeSection.addEventListener('click', e => {
 });
