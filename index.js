@@ -413,46 +413,46 @@ let offsetDeg= 5;
 let minY=-5, maxY=2;
 let minX=-20, maxX=20;
 
-window.addEventListener("deviceorientation", (e) => {
-    if(initFlag==""){
-        initBeta= Math.round(e.beta);
-        initGamma= Math.round(e.gamma);
-        initFlag="iniciado"
-    }
+// window.addEventListener("deviceorientation", (e) => {
+//     if(initFlag==""){
+//         initBeta= Math.round(e.beta);
+//         initGamma= Math.round(e.gamma);
+//         initFlag="iniciado"
+//     }
     
-    let alpha = Math.round(e.alpha);
-    let beta = Math.round(e.beta);
-    let gamma = Math.round(e.gamma);
+//     let alpha = Math.round(e.alpha);
+//     let beta = Math.round(e.beta);
+//     let gamma = Math.round(e.gamma);
 
-    if( ((beta-initBeta) > (maxX + offsetDeg)) || ((beta-initBeta) < (minX - offsetDeg)) ){
-        setTimeout(() => {
-            if( ((beta-initBeta) > (maxX + offsetDeg)) || ((beta-initBeta) < (minX - offsetDeg)) ){
-                initBeta=beta;}
-        }, 500);
-    }
+//     if( ((beta-initBeta) > (maxX + offsetDeg)) || ((beta-initBeta) < (minX - offsetDeg)) ){
+//         setTimeout(() => {
+//             if( ((beta-initBeta) > (maxX + offsetDeg)) || ((beta-initBeta) < (minX - offsetDeg)) ){
+//                 initBeta=beta;}
+//         }, 500);
+//     }
 
-    if( ((gamma-initGamma) > (maxY + offsetDeg))  || ((gamma-initGamma) < (minY - offsetDeg)) ){
-        setTimeout(() => {
-            if( ((gamma-initGamma) > (maxY + offsetDeg))  || ((gamma-initGamma) < (minY - offsetDeg)) ){
-                initGamma=gamma;}
-        }, 500);
-    }
+//     if( ((gamma-initGamma) > (maxY + offsetDeg))  || ((gamma-initGamma) < (minY - offsetDeg)) ){
+//         setTimeout(() => {
+//             if( ((gamma-initGamma) > (maxY + offsetDeg))  || ((gamma-initGamma) < (minY - offsetDeg)) ){
+//                 initGamma=gamma;}
+//         }, 500);
+//     }
 
-    beta= beta-initGamma;
-    gamma= gamma-initGamma;
+//     beta= beta-initGamma;
+//     gamma= gamma-initGamma;
 
-    let y= gamma;
-    let x= beta;
+//     let y= gamma;
+//     let x= beta;
 
-    // Limitaciones
-    y= limitar(y, maxY, minY);
-    x= limitar(x, maxX, minX);
+//     // Limitaciones
+//     y= limitar(y, maxY, minY);
+//     x= limitar(x, maxX, minX);
 
-    rootStyles.setProperty("--orientation-x", x);
-    rootStyles.setProperty("--orientation-y", y);
+//     rootStyles.setProperty("--orientation-x", x);
+//     rootStyles.setProperty("--orientation-y", y);
 
-    console.log(initFlag,alpha, beta, gamma)
-}, true);
+//     console.log(initFlag,alpha, beta, gamma)
+// }, true);
 
 linkWelcomeSection.addEventListener('click', e => {
 });
