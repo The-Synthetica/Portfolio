@@ -160,7 +160,12 @@ function barChange(cont, flag){
 
 //Animation Calculator
 const elementCalculator= document.getElementById('elementCalculator');
-setInterval(() => { createCalculator(); createConnect4() }, 250);
+setInterval(() => {
+    if(document.getElementById('calculator').style.visibility=='visible')
+        createCalculator(); 
+    if(document.getElementById('connect4').style.visibility=='visible')
+        createConnect4();
+}, 500);
 
 function createCalculator(){
     const newDiv1= document.createElement('div');
@@ -269,7 +274,13 @@ function randomInterval(min, max) {
 }
 // Animation Liquid
 const elementLiquid= document.getElementById('elementLiquidRelax');
-setInterval(() => { createLiquid(); createLiquidAboutMe();}, 700);
+setInterval(() => {
+    
+    if(document.getElementById('liquidRelax').style.visibility=='visible')
+        createLiquid(); 
+    if(document.getElementById('about-me').style.visibility=='visible')
+        createLiquidAboutMe();
+}, 700);
 
 function createLiquid(){
     const newDiv1= document.createElement('div');
@@ -440,6 +451,7 @@ for(let i=0; i<barLinks.length; i++){
     fullscreenScrolls[cont].style.top= "0";
     fullscreenScrolls[cont].style.opacity= "1";
     fullscreenScrolls[cont].style.visibility= 'visible';
+
     setTimeout(() => {
         fullscreenScrolls[cont].style.visibility= 'visible';
     }, 2000);
@@ -472,6 +484,12 @@ linkWelcomeSection.addEventListener('click', e => {
     fullscreenScrolls[cont].style.top= "100vh";
     fullscreenScrolls[cont].style.opacity= "0";
 
+    prepos= cont;
+    setTimeout(() => {
+        fullscreenScrolls[prepos].style.visibility= 'hidden';
+    }, 2000);
+
+
     cont=0;
     barChange(cont, flag)
     for(let i=0; i<barLinks.length; i++)
@@ -479,9 +497,12 @@ linkWelcomeSection.addEventListener('click', e => {
     
     fullscreenScrolls[cont].style.top= "0";
     fullscreenScrolls[cont].style.opacity= "1";
+    fullscreenScrolls[cont].style.visibility= 'visible';
 
-    // console.log(bar.scrollWidth + 'px' barLinks.length * 2 + 2 + 'rem')
-    // bar.scrollTo(bar.scrollLeft + barLinks[cont-2].offsetWidth, 0);
+    setTimeout(() => {
+        fullscreenScrolls[cont].style.visibility= 'visible';
+    }, 2000);
+
     bar.scrollTo(0, 0);
 
     let dist=0;
