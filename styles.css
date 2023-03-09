@@ -885,7 +885,6 @@ main{
     
     animation: liquidMove 7s linear forwards;
 }
-
 .liquidCircle2{
     position: absolute;
 
@@ -1353,8 +1352,8 @@ main{
     /* --rotateY: calc(var(--orientation-y) * 1deg);
     --rotateX: calc(var(--orientation-x) * 1deg); */
 
-    --rotateY: calc(-20 * 1deg);
-    --rotateX: calc(20 * 1deg);
+    --rotateY: calc(0 * 1deg);
+    --rotateX: calc(0 * 1deg);
 
     transform: rotateX(var(--rotateX))
                rotateY(var(--rotateY));
