@@ -1,231 +1,137 @@
 <!DOCTYPE html>
-<html id="html">
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Francisco Rizzi</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./styles.css">
 
-        <link rel="preload" as="styles" href="./styles.css">
-        <link rel="preload" as="script" href="./index.js">
-
-        
-        <link rel="stylesheet" href="./styles.css"/>
-        
-        <link rel="icon" type="image/png" href="./icon.png"/>
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;0,700;1,400;1,500;1,600;1,700&family=Open+Sans:wght@700&display=swap" rel="stylesheet">
-
+        <link rel="icon" href="./src/proto.png" type="image/png" />
     </head>
     <body id="body">
-            <div id="wrap-loader">
-                <div id="loader">
-                    <div class="loader-bar"></div>
-                    <div class="loader-bar"></div>
-                    <div class="loader-bar"></div>
-                    <div class="loader-bar"></div>
-                    <div class="loader-bar"></div>
-                    <div class="loader-bar"></div>
-                    <div class="loader-bar"></div>
-                    <div class="loader-bar"> </div>
+
+        <header>
+            <nav>
+                <div class="logo">
+                    <h1>Synthetica</h1>
                 </div>
+                <ul>
+                    <li class="link-li"><a href="#bienvenida" class="link-active">Inicio</a></li>
+                    <li class="link-li"><a href="./Portfolio/index.html" class="link">Portfolio</a></li>
+                    <li class="link-li"><a href="./SobreMi/index.html" class="link">Sobre Mi</a></li>
+                    <li class="link-li"><a href="#" class="link">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+
+        <main id="main">
+             <section id="bienvenida" class="fullscreen-section">
+                <h1 id="welcome-title">Buenas!</h1>
+             </section>
+             <section id="presentacion" class="fullscreen-section">
+                <p>Desarrollador front-end trainee, estudiante de ciencia de datos y aprendiz de Node.js</p>
+                <h1>Soy Francisco Rizzi, aspirante a full-stack developer.</h1>
+                <p>Synthetica (nombre para el perfil de mis proyectos), representa mi vocacion para desarrollarme dentro de la industria.</p>
+                <div class="img-cont"><img src="./src/proto.png"></div>
+
+                <p>Si te interesa lo que hago...</p>
+                <a href="./SobreMi/index.html" class="link">Podrias visitar la seccion "Sobre Mi"</a>
+             </section>
+             <section id="banner" class="">
+                <div class="img-cont">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIKdmlld0JveD0iMCwwLDI1NiwyNTYiCnN0eWxlPSJmaWxsOiMwMDAwMDA7Ij4KPGcgZmlsbD0iI2ZmZmZmZiIgZmlsbC1ydWxlPSJub256ZXJvIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgZm9udC1mYW1pbHk9Im5vbmUiIGZvbnQtd2VpZ2h0PSJub25lIiBmb250LXNpemU9Im5vbmUiIHRleHQtYW5jaG9yPSJub25lIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG5vcm1hbCI+PGcgdHJhbnNmb3JtPSJzY2FsZSg4LjUzMzMzLDguNTMzMzMpIj48cGF0aCBkPSJNMjQsNGgtMThjLTEuMTA1LDAgLTIsMC44OTUgLTIsMnYxOGMwLDEuMTA1IDAuODk1LDIgMiwyaDE4YzEuMTA1LDAgMiwtMC44OTUgMiwtMnYtMThjMCwtMS4xMDUgLTAuODk1LC0yIC0yLC0yek0xNSwyMC4zOGMwLDEuNzc3IC0xLjA5LDIuNzczIC0yLjksMi43NzNjLTEuNzg4LDAgLTIuOTI3LC0xLjA0NSAtMi45MjcsLTIuNzM1aDEuOTM3YzAuMDA1LDAuNjI3IDAuMzc5LDEuMDIzIDAuOTU3LDEuMDIzYzAuNTk0LDAgMC45MTMsLTAuMzc0IDAuOTEzLC0xLjA3OHYtNS4zNjVoMi4wMnpNMjAuNDgxLDIzLjE1M2MtMi4wMDksMCAtMy4yNzMsLTAuOTQ2IC0zLjMwNywtMi40NzZoMS45MjZjMC4wNDksMC41NzggMC42MjYsMC45NDYgMS40NjMsMC45NDZjMC43NTQsMCAxLjI3MiwtMC4zNjMgMS4yNzIsLTAuODg2YzAsLTAuNDQgLTAuMzQ3LC0wLjY3NyAtMS4yNTUsLTAuODU4bC0xLjA0NSwtMC4yMDljLTEuNDUzLC0wLjI3NSAtMi4yMDEsLTEuMDY3IC0yLjIwMSwtMi4zMTZjMCwtMS41NTIgMS4yNDQsLTIuNTcgMy4xNTgsLTIuNTdjMS44NiwwIDMuMTQ3LDEuMDA3IDMuMTgsMi40NzZoLTEuODY1Yy0wLjA0NCwtMC41NjEgLTAuNTc4LC0wLjk1MiAtMS4yODksLTAuOTUyYy0wLjcwOSwwIC0xLjE3NiwwLjMzNiAtMS4xNzYsMC44NjRjMCwwLjQzNSAwLjM1MiwwLjY4OCAxLjE4OCwwLjg1M2wxLjAyMiwwLjE5OGMxLjU2OSwwLjMwMyAyLjI3MywxLjAxMiAyLjI3MywyLjI3MmMwLjAwMSwxLjY1NyAtMS4yNjQsMi42NTggLTMuMzQ0LDIuNjU4eiI+PC9wYXRoPjwvZz48L2c+Cjwvc3ZnPg==">
+                </div>
+                <div class="img-cont">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIKdmlld0JveD0iMCwwLDI1NiwyNTYiCnN0eWxlPSJmaWxsOiMwMDAwMDA7Ij4KPGcgZmlsbD0iI2ZmZmZmZiIgZmlsbC1ydWxlPSJub256ZXJvIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgZm9udC1mYW1pbHk9Im5vbmUiIGZvbnQtd2VpZ2h0PSJub25lIiBmb250LXNpemU9Im5vbmUiIHRleHQtYW5jaG9yPSJub25lIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG5vcm1hbCI+PGcgdHJhbnNmb3JtPSJzY2FsZSg4LjUzMzMzLDguNTMzMzMpIj48cGF0aCBkPSJNMjUuNDI4LDMuMzMzYy0wLjE5LC0wLjIxMiAtMC40NjEsLTAuMzMzIC0wLjc0NSwtMC4zMzNoLTE5LjM2NmMtMC4yODQsMCAtMC41NTUsMC4xMjEgLTAuNzQ1LDAuMzMzYy0wLjE5LDAuMjEyIC0wLjI4LDAuNDk1IC0wLjI0OSwwLjc3N2wyLjIwMiwxOS44MjNjMC4wNDQsMC40MDMgMC4zMjksMC43NCAwLjcxOSwwLjg1MWw3LjQ4LDIuMTM3YzAuMDksMC4wMjYgMC4xODMsMC4wMzkgMC4yNzUsMC4wMzljMC4wOTIsMCAwLjE4NSwtMC4wMTMgMC4yNzUsLTAuMDM5bDcuNDgsLTIuMTM3YzAuMzksLTAuMTExIDAuNjc0LC0wLjQ0OCAwLjcxOSwtMC44NTFsMi4yMDMsLTE5LjgyM2MwLjAzMiwtMC4yODIgLTAuMDU4LC0wLjU2NSAtMC4yNDgsLTAuNzc3ek0yMC41MTYsMTMuMDc0bC0wLjQ0Niw3LjI4NWwtNS4wMzgsMS42NDdsLTUuMDM4LC0xLjY0N2wtMC4xOTEsLTMuNDg0aDIuNTVsMC4wNjQsMS41ODRsMi42MTUsMC44ODdsMi42MTUsLTAuODg3bDAuMTkxLC0yLjg1aC01LjYxMmwtMC4xMjcsLTIuNTM0aDUuODY3bDAuMTkxLC0yLjUzNGgtOC44MDFsLTAuMTkxLC0yLjUzNWgxMS42N3oiPjwvcGF0aD48L2c+PC9nPgo8L3N2Zz4=">
+                </div>
+                <div class="img-cont">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIKdmlld0JveD0iMCwwLDI1NiwyNTYiCnN0eWxlPSJmaWxsOiMwMDAwMDA7Ij4KPGcgZmlsbD0iI2ZmZmZmZiIgZmlsbC1ydWxlPSJub256ZXJvIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgZm9udC1mYW1pbHk9Im5vbmUiIGZvbnQtd2VpZ2h0PSJub25lIiBmb250LXNpemU9Im5vbmUiIHRleHQtYW5jaG9yPSJub25lIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG5vcm1hbCI+PGcgdHJhbnNmb3JtPSJzY2FsZSg4LjUzMzMzLDguNTMzMzMpIj48cGF0aCBkPSJNMjUuNDI4LDMuMzMzYy0wLjE5LC0wLjIxMiAtMC40NjEsLTAuMzMzIC0wLjc0NSwtMC4zMzNoLTE5LjM2NmMtMC4yODQsMCAtMC41NTUsMC4xMjEgLTAuNzQ1LDAuMzMzYy0wLjE5LDAuMjEyIC0wLjI4LDAuNDk1IC0wLjI0OSwwLjc3N2wyLjIwMiwxOS44MjNjMC4wNDQsMC40MDMgMC4zMjksMC43NCAwLjcxOSwwLjg1MWw3LjQ4LDIuMTM3YzAuMDksMC4wMjYgMC4xODMsMC4wMzkgMC4yNzUsMC4wMzljMC4wOTIsMCAwLjE4NSwtMC4wMTMgMC4yNzUsLTAuMDM5bDcuNDgsLTIuMTM3YzAuMzksLTAuMTExIDAuNjc0LC0wLjQ0OCAwLjcxOSwtMC44NTFsMi4yMDMsLTE5LjgyM2MwLjAzMiwtMC4yODIgLTAuMDU4LC0wLjU2NSAtMC4yNDgsLTAuNzc3ek0yMC42MjksMTAuNDNoLTguOTNsMC4yMTIsMi41NDJoOC41MDNsLTAuNjM4LDcuNTFsLTQuNzczLDEuNTE4bC0wLjA0NywtMC4wMTVsLTQuNzIsLTEuNTA1bC0wLjI1OCwtMy4wNmgyLjMxMmwwLjEwMSwxLjE4OWwyLjYzNywwLjU4MWwyLjU5MSwtMC41ODJsMC4yNzUsLTMuMjEzaC04LjA5bC0wLjYyNiwtNy4zOTVoMTEuNjU5eiI+PC9wYXRoPjwvZz48L2c+Cjwvc3ZnPg==">
+                </div>
+                <div class="img-cont">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIKdmlld0JveD0iMCwwLDI1NiwyNTYiCnN0eWxlPSJmaWxsOiMwMDAwMDA7Ij4KPGcgZmlsbD0iI2ZmZmZmZiIgZmlsbC1ydWxlPSJub256ZXJvIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgZm9udC1mYW1pbHk9Im5vbmUiIGZvbnQtd2VpZ2h0PSJub25lIiBmb250LXNpemU9Im5vbmUiIHRleHQtYW5jaG9yPSJub25lIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG5vcm1hbCI+PGcgdHJhbnNmb3JtPSJzY2FsZSg4LjUzMzMzLDguNTMzMzMpIj48cGF0aCBkPSJNMTUsM2MtNi42MjcsMCAtMTIsNS4zNzMgLTEyLDEyYzAsNS42MjMgMy44NzIsMTAuMzI4IDkuMDkyLDExLjYzYy0wLjA1NiwtMC4xNjIgLTAuMDkyLC0wLjM1IC0wLjA5MiwtMC41ODN2LTIuMDUxYy0wLjQ4NywwIC0xLjMwMywwIC0xLjUwOCwwYy0wLjgyMSwwIC0xLjU1MSwtMC4zNTMgLTEuOTA1LC0xLjAwOWMtMC4zOTMsLTAuNzI5IC0wLjQ2MSwtMS44NDQgLTEuNDM1LC0yLjUyNmMtMC4yODksLTAuMjI3IC0wLjA2OSwtMC40ODYgMC4yNjQsLTAuNDUxYzAuNjE1LDAuMTc0IDEuMTI1LDAuNTk2IDEuNjA1LDEuMjIyYzAuNDc4LDAuNjI3IDAuNzAzLDAuNzY5IDEuNTk2LDAuNzY5YzAuNDMzLDAgMS4wODEsLTAuMDI1IDEuNjkxLC0wLjEyMWMwLjMyOCwtMC44MzMgMC44OTUsLTEuNiAxLjU4OCwtMS45NjJjLTMuOTk2LC0wLjQxMSAtNS45MDMsLTIuMzk5IC01LjkwMywtNS4wOThjMCwtMS4xNjIgMC40OTUsLTIuMjg2IDEuMzM2LC0zLjIzM2MtMC4yNzYsLTAuOTQgLTAuNjIzLC0yLjg1NyAwLjEwNiwtMy41ODdjMS43OTgsMCAyLjg4NSwxLjE2NiAzLjE0NiwxLjQ4MWMwLjg5NiwtMC4zMDcgMS44OCwtMC40ODEgMi45MTQsLTAuNDgxYzEuMDM2LDAgMi4wMjQsMC4xNzQgMi45MjIsMC40ODNjMC4yNTgsLTAuMzEzIDEuMzQ2LC0xLjQ4MyAzLjE0OCwtMS40ODNjMC43MzIsMC43MzEgMC4zODEsMi42NTYgMC4xMDIsMy41OTRjMC44MzYsMC45NDUgMS4zMjgsMi4wNjYgMS4zMjgsMy4yMjZjMCwyLjY5NyAtMS45MDQsNC42ODQgLTUuODk0LDUuMDk3YzEuMDk4LDAuNTczIDEuODk5LDIuMTgzIDEuODk5LDMuMzk2djIuNzM0YzAsMC4xMDQgLTAuMDIzLDAuMTc5IC0wLjAzNSwwLjI2OGM0LjY3NiwtMS42MzkgOC4wMzUsLTYuMDc5IDguMDM1LC0xMS4zMTVjMCwtNi42MjcgLTUuMzczLC0xMiAtMTIsLTEyeiI+PC9wYXRoPjwvZz48L2c+Cjwvc3ZnPg==">
+                </div>
+             </section>
+             <!-- <section id="" class="fullscreen-section"></section> -->
+             <section id="experiencia" class="fullscreen-section">
+                <h1>Algunos de mis proyectos</h1>
+                <div class="grid">
+                    <div class="img-cont">
+                        <img src="./src/bg4.png">
+                        <a href="./Portfolio/index.html#landing-page" class="img-card">
+                            <h1>Landing Page</h1>
+                        </a>
+                    </div>
+                    <div class="img-cont">
+                        <img src="./src/bg4.png">
+                        <a href="./Portfolio/index.html#doc-tec" class="img-card">
+                            <h1>Documentacion Tecnica</h1>
+                        </a>
+                    </div>
+                    <div class="img-cont">
+                        <img src="./src/bg4.png">
+                        <a href="./Portfolio/index.html#survey" class="img-card">
+                            <h1>Encuesta</h1>
+                        </a>
+                        
+                    </div>
+                    <div class="img-cont">
+                        <img src="./src/bg4.png">
+                        <a href="./Portfolio/index.html#calculator" class="img-card">
+                            <h1>Calcoolator</h1>
+                        </a>
+                        
+                    </div>
+                    <div class="img-cont">
+                        <img src="./src/bg4.png">
+                        <a href="./Portfolio/index.html#connect4" class="img-card">
+                            <h1>Connect 4</h1>
+                        </a>
+                        
+                    </div>
+                    <div class="img-cont">
+                        <img src="./src/bg4.png">
+                        <a href="./Portfolio/index.html#liquid" class="img-card">
+                            <h1>Liquid Relax</h1>
+                        </a>
+                        
+                    </div>
+                </div>
+             </section>
+        </main>
+
+        
+        <footer>
+
+            <div class="footer-cont">
+                <a href="#bienvenida" class="footer-link-active">Inicio</a>
+                <a href="https://linktr.ee/FranciscoRizzi" target="_blank" class="img-cont">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAADzElEQVR4nO2bz29VRRTHPxYrIIVIbGBBiWI0wBawwH9gSIyK6EKXSmJkY4xRgsQIhMa4IgUKfwLUpoIhRgIrtrjRRg1pDJoWwg+LbUUpol4yybioRufce+fOu/e97yc5u5czZ86cd2fOOTMghBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIcR8FgD9wB7gE2AMmALuAllOmQVGgbURnbwaGPG689jyJ3ALGAe+AD4GngOW1iUAHgMGgKsFHJ0FxC1gXyTnT0W27Q5wCtgGdNECVgJDBSM8jwxHsHWkYhu/A14EHiARrwI/VTypzMtMBHvzfnaKynngCSrkIeBYoslkXqYbtACZH2sHFbDIb0JZYhmJYPtoYpv/8oeRaHS3yPlTwFMR7F9bwSZskQNEIvVnZ8ZHfgzn/02f39BnEs/lzbKGv5JzwEngMPAMsA7oodl0A6uAp4G3/Jfg9xz+cL/dUuaoaT3tuDzgtVadiRPzuP8qWI/g3wOLiwx01DjAaBtEehE2+QzZ4qN9RTJcy19tsEOi/r9wJYkLBj/9AjxKDgYMSk+nzP5qzDLgS4O/PrAq7DLUdn4AHql2Xo1iDfCrYS8wBWy/YTVfr35OjeMdg9/cvhFkb0DJj/54JubzsC+d/J/v3iVC9dBtvK2qz2cVSMz+w/EYpZVvA0pcQ6Ju9fmsJv2H7YExvrYouRlQ4jacOtfnsxb2H9YH9LvENsi9gJLekkbW4bOTVdR/WBLQ/5tFyZ2AEjdIuy7AdMm5rQjon7MoCdV/XJGtSfX5LGH/4cmA/msWJWMBJc83tD6fJeg/hDZh59vSEeqa8U2tz2cV9x+GAmOdsCjZHVDyc9HyapuzEJgI+O49i6LNhqhxabeYzxsGv23AgCsYXQ4ouh0hH2gnlhuifzJP9fhDw2pe9KXYTqcLOGPw1/48Snt9lIeUXqjTPckW3Yk9YvDTXJEyx37jKWLcWmZtM5YBnxl9dKjIAIt9E8EywF1fCXQN606I+p0+qbL45kaZ8s3WAtcwzgJv+8ZOn7/S2GR6fJFtmz/nX8nhDycvlTVgV84By8psjd4HlBV3RyoKBxMbntX8fYBFPgceJCLv+4unKScxHMHuVvQfzvjMODo7Ev+NZyLYnPqzMxg78v+Je4RwLtFkphu0ANeBl0mES6lfAL6peFIjEWytuv8w56O+bKewcBrubkJ/6tttnfQ+YMInq26Tr815+VngI38CuOSfeP7R8PcBcz6Z+go46UvKGzv8TqwQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGE4N/cB3zTMXV+uYm1AAAAAElFTkSuQmCC">
+                </a href="https://linktr.ee/FranciscoRizzi" target="_blank" class="img-cont">
+            </div>
+            <div class="footer-cont">
+                <a href="./Portfolio/index.html" class="footer-link">Portfolio</a>
+                <a href="https://linktr.ee/FranciscoRizzi" target="_blank" class="img-cont">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAACXBIWXMAAAsTAAALEwEAmpwYAAABuElEQVR4nO2aMUvDQBiGHx1sEURxUBG7CQVFJ3ETR/GHuPkHpIPgJDgriL9ALRYcHBRHB9FJxMFNXK3YDIKingROKOFyJjRtLsf3wDv17rinX/qFXAqCIAiCILhOBagDAaAcS7inBlDNUrbpgNh/edV77Zi6AzJJc5SFcOCASNK0shBWBYsIpyXvijlZ4StgC9gBHn0XrgF9bePLwLGvwtcR2T9GdMf0TnjbMu/SR+Fdy7xbH4WfgCHDnFng00dhBZwB423j54CHnGR7IqyAd93A7oCvHGV7JqwcSmGEA+AC2Af29DPus4vC/YY5E5ExBzFrnwMfwAYwbPg8vMcvA/e+CJ8CSwn2MAjc+CA8n2If0wkbotPCaTnxRbgMLOqULOPWfBBejRwShp15JmbsQtGFB4AXw5phMzMxVnThFcuRq+mxs1R04XXLuqOG8eGX8FNk4Zpl3cmYOd9FFt60rBv3FkGEkQp3hpJLGvkNR5GmhRnp0shtyb37sHIsIpyWvCsmFabLl3TgQNWS5i0L4YYDIklzmIVwVZ9AKMcTHhVNkREV/aevvN7q29LSlc1MVhAEQRAEusIvBRnsqHh5AVYAAAAASUVORK5CYII=">
+                </a href="https://linktr.ee/FranciscoRizzi" target="_blank" class="img-cont">
+            </div>
+            <div class="footer-cont">
+                <a href="./SobreMi/index.html" class="footer-link">Sobre Mi</a>
+                <a href="https://linktr.ee/FranciscoRizzi" target="_blank" class="img-cont">
+                    <img src="data:image/png;base64,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">
+                </a href="https://linktr.ee/FranciscoRizzi" target="_blank" class="img-cont">
+            </div>
+            <div class="footer-cont">
+                <a href="./Contacto/index.html" class="footer-link">Contacto</a>
+                <a href="https://linktr.ee/FranciscoRizzi" target="_blank" class="img-cont">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAACXBIWXMAAAsTAAALEwEAmpwYAAADYElEQVR4nO2ay29MURzHP42UJuJZVNWOeMTCRkJs7EgkRElIRcJCkFAinYRYEY8N1U6iOysWwh+ACmHnUa+ohQaxQeLVaI16tDpykt8k4+bemTmPe+Y27jf5bSZzz+9+7jn3nN/jQqpUqVKl+n81G9gKZIFu4CXQD/wW65ffuuU/LXLNmFI9sB/oAfKG9gBolbESq7lAJ/DdAjRoOaADaCJBqgUOAN8cggZNPcSjwIRqwy4EnsYIGrQnwIJqwW6KeVajbBBo9g27AxiuAmzBRoA9vmB3VxE0aGonj30ZjyQAtHimN8QFOx8YSABk0NQ+ssg17HjPu7GuPZbj0ZkOJwCqnGVcwTZJxKPj/BXw0PMroJZ2owvgTg2nP4HNRddOA955hG63ha3XjI3VkRXUIY/AOduEo1Vz46gJGWOmzLwv6H02wD2OHF3wCHzfFLYRGNVwtKrEWCs8Aqt7bjABbtF0VC6L6fMIvcUEOKvpZHmJsaZKOccXsCoaaKtb04kqAoSpxvM7rOyaCfBrTSePIsbJeIbNS2FQW18MHK0MGedcFYA/mwD/MnB0N+QsVtHWe8/A6tzX1pChs7B3ebXnPNoI+K2hsx/AEsuozdY+mQD3Wjjsk6MoqIPAnzIzc8fwdbLetK5bOlXXjwsZd22JM3lbUUp61iAtLdhVE+ATDpZWV0RCofpHFwOzfTrkfzOAYwZBi1Hgsd7R+5SNgC4U8rvEwlZDQer1eKPhszgnr1izHO6sl4A67HRPI3lQ926km46A85JqLja8j1qNQoSKBaw6DHmHpo6sI8BEzfto1vCx1wZ4ckyFuI8CXkkbdBnwwVeJB2lT5mMytUvfBnYB8/hXKok/Jaui0vHO4EBTDBMJ0wjpmZR5SwUoUV1FZ59LXPEEbGNtrmBrqpDt5A1ycWetlqUJACrXcVABjDNlEgAVZSMSETrVjQSARUVUO13D1lkUAuKe2bC2jrXWJAAuaANxLOOC2hMAGNyN1ZcIsam3whsZdvwFXlhQ0ea6yx/UnBK9pVF5GKp3vA6YJDHsceCrQ9CcrDIvH5xuDzhXCfh56Tk1lAlFVWx8yzCfHpUUT2U90/GoLHA5IrCvVOrBbAROSo3ruXwRMCSFOhWjv5DWSIc0wYyT91SpUqVKxRjXXweUidsL9PYfAAAAAElFTkSuQmCC">
+                </a href="https://linktr.ee/FranciscoRizzi" target="_blank" class="img-cont">
             </div>
 
-            <header id="header">
-                <navbar id="navbar">
-
-                    <a id="link-welcome-section" href="#welcome-section">My Portfolio</a>
-            
-                    <label class="burger-menu" for="burger-checkbox">
-                        <input id="burger-checkbox" type="checkbox">
-                        <div class="burger-item-before"></div>
-                        <div class="burger-item"></div>
-                        <div class="burger-item-after"></div>
-                        <div id="nav-drop" class="dropdown-content">
-                            <!-- <a class="nav-link" target="_blank" href="https://github.com/The-Synthetica">Github</a>
-                            <a class="nav-link" target="" href="#">Contacto</a>
-                            <a class="nav-link" target="_blank" href="https://linktr.ee/FranciscoRizzi">LinkedIn</a> -->
-                            <a class="nav-link" target="_blank" href="https://linktr.ee/FranciscoRizzi">
-                                <span>Linktree</span>
-                            </a>
-                        </div>
-                    </label>
-                </navbar>
-                <div id="nav-progress-bar">
-                    <div class="link-wrap">
-                        <a class="bar-link" href="#landing-page">Landing page</a>
-                        <a class="bar-link" href="#documentation-page">Documentation page</a>
-                        <a class="bar-link" href="#survey-page">Survey page</a>
-                        <a class="bar-link" href="#survey-page">Calculator</a>
-                        <a class="bar-link" href="#survey-page">Connect4</a>
-                        <a class="bar-link" href="#liquidRelax">Liquid Relax</a>
-                        <a class="bar-link" href="#about-me">About me</a>
-                    </div>
-                </div>
-            </header>
-            
-            <main id="main" class="main-content">
-                <section id="welcome-section" class="fullscreenScroll">
-            
-                        <div class="welcome-text scrollFade-notVisible">
-                             <h1 id="welcome-title">Hi! I'm <span id="name">Francisco Rizzi</span> and welcome to my portfolio.</h1>
-            
-                             <p id="description">I'm a Junior Front-end developer, intrested in being a FullStack developer. I also study Data Science too! In the next sections you can see some of my projects...</p>
-                        </div>
-            
-                </section>
-
-                <section id="landing-page" class="project-section fullscreenScroll">
-                    <h1 class="project-title scrollFade-notVisible">Landing Product Page</h1>
-                        <div class="project-frame scrollFade-notVisible">
-            
-                            <div class="wrap-frame-wrap follow-card">
-                                    <div class="frame-wrap">
-                                        <iframe class="project-tile" src="https://the-synthetica.github.io/Sophie-s-Album-Store/" ></iframe>
-                                    </div>
-                                    <a target="_blank" href="https://the-synthetica.github.io/Sophie-s-Album-Store/" class="frame-link"></a>
-                            </div>
-                        </div>
-            
-                </section>
-                <section id="documentation-page" class="project-section fullscreenScroll">
-                    <h1 class="project-title scrollFade-notVisible">
-                        Technical Documentation Page
-            
-                        <div class="glitch">
-                            <span aria-hidden="true">Technical Documentation Page</span>
-                            <span aria-hidden="true">Technical Documentation Page</span>
-                            <span aria-hidden="true">Technical Documentation Page</span>
-                            <span aria-hidden="true">Technical Documentation Page</span>
-                        </div>
-            
-                    </h1>
-            
-                        <div class="project-frame scrollFade-notVisible">
-                            <div id="wrap-frame-1" class="wrap-frame-wrap follow-card">
-                                <div class="frame-wrap">
-                                    <iframe class="project-tile" src="https://the-synthetica.github.io/MathParser"></iframe>
-                                </div>
-                                <a target="_blank" href="https://the-synthetica.github.io/MathParser" class="frame-link"></a>
-                            </div>
-                        </div>
-                </section>
-                <section id="survey-page" class="project-section fullscreenScroll">
-                    <h1 class="project-title scrollFade-notVisible">Survey Form</h1>
-                        <div class="project-frame scrollFade-notVisible">
-                            <div class="wrap-frame-wrap follow-card">
-                                <div class="frame-wrap">
-                                    <iframe width="794" height="1550" class="project-tile" src="https://the-synthetica.github.io/Dreamspace"></iframe>
-                                </div>
-                                <a target="_blank" href="https://the-synthetica.github.io/Dreamspace" class="frame-link"></a>
-                            </div>
-                        </div>
-                </section>
-                <section id="calculator" class="project-section fullscreenScroll">
-                    <h1 class="project-title scrollFade-notVisible">Calcoolator</h1>
-                        <div class="project-frame scrollFade-notVisible">
-                            <div class="wrap-frame-wrap follow-card">
-                                <div class="frame-wrap">
-                                    <iframe width="794" height="1550" class="project-tile" src="https://the-synthetica.github.io/calculator/"></iframe>
-                                </div>
-                                <a target="_blank" href="https://the-synthetica.github.io/calculator/" class="frame-link"></a>
-                            </div>
-                        </div>
-                    <div class="wrap-element">
-                        <div id="elementCalculator">
-                            <div class="Multiply"></div>
-                            <div class="Divide"></div>
-                            <div class="Plus"></div>
-                            <div class="Minus"></div>
-                        </div>
-                    </div>
-                </section>
-                <section id="connect4" class="project-section fullscreenScroll">
-                    <h1 class="project-title scrollFade-notVisible">Co<span style="color: red;">n</span><span style="color: yellow;">n</span>ect 4</h1>
-                        <div class="project-frame scrollFade-notVisible">
-                            <div class="wrap-frame-wrap follow-card">
-                                <div class="frame-wrap">
-                                    <iframe width="794" height="1550" class="project-tile" src="https://the-synthetica.github.io/connect4"></iframe>
-                                </div>
-                                <a target="_blank" href="https://the-synthetica.github.io/connect4" class="frame-link"></a>
-                            </div>
-                        </div>
-
-                    <div class="wrap-element">
-                        <div id="elementConnect4">
-                            <div class="token1"></div>
-                            <div class="token2"></div>
-                        </div>
-                    </div>
-
-                </section>
-                <section id="liquidRelax" class="project-section fullscreenScroll">
-                    <h1 class="project-title scrollFade-notVisible">L<span style="color: #000000;">i</span>q<span style="color: #000000;">ui</span>d R<span style="color: #000000;">e</span>l<span style="color: #000000;">a</span>x</h1>
-                        <div class="project-frame scrollFade-notVisible">
-                            <div class="wrap-frame-wrap follow-card">
-                                <div class="frame-wrap">
-                                    <iframe width="794" height="1550" class="project-tile" src="https://the-synthetica.github.io/liquid/"></iframe>
-                                </div>
-                                <a target="_blank" href="https://the-synthetica.github.io/liquid/" class="frame-link"></a>
-                            </div>
-                        </div>
-
-                    
-                        <div class="wrap-element">
-                            <div id="elementLiquidRelax">
-                                <div class="liquidCircle1"></div>
-                                <div class="liquidCircle2"></div>
-                                <div class="liquidLayer1">
-                                    <div class="liquidLayer1-1"></div>
-                                </div>
-                                <div class="liquidLayer2">
-                                    <div class="liquidLayer2-1"></div>
-                                </div>
-                            </div>
-                        </div>
-                </section>
-                
-            
-                <section id="about-me" class="project-section fullscreenScroll">
-                    <div class="section-wrap">
-                        
-                        <p>
-                            I create beautiful and functional websites using HTML, CSS and Javascript. I can create the website that fits to your needings. Im intrested in create modern pages, with intresting design or utilities.
-                            <br>
-                            (friendly reminder, im still a trainee &#128128;)
-                        </p>
-                        <p>
-                            I started my career as a trainee front-end six months ago, not only learning how to build pages, but even realizing creativity, modern logic, and applications of some wonderful projects that excite me. I am really enjoying this!
-                            <br>
-                            If you have any suggestions or ideas, I'm open to coworking. &#128517;
-                        </p>
-
-                        <button id="buttonAboutMe">Contact Me!</button>
-
-                    </div>
-                    
-                    <div class="wrap-element">
-                        <div id="elementAboutMe">
-                            <div class="liquidAboutMeCircle1"></div>
-                            <div class="liquidAboutMeCircle2"></div>
-                            <div class="liquidAboutMeLayer1">
-                                <div class="liquidAboutMeLayer1-1"></div>
-                            </div>
-                            <div class="liquidAboutMeLayer2">
-                                <div class="liquidAboutMeLayer2-1"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                </section>
-
-            </main>
+        </footer>
         
-        <script src="./index.js" defer></script>
-        <!-- <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script> -->
-
+        <script src="./index.js" async defer></script>
     </body>
 </html>
