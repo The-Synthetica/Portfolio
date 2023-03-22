@@ -233,6 +233,7 @@ nav > ul{
     top: 0; left: 0; bottom: 0; right: 0;
     z-index: 3;
     backdrop-filter: contrast(0.79) brightness(0.7) saturate(0.7);
+    -webkit-backdrop-filter: contrast(0.79) brightness(0.7) saturate(0.7);
 }
 
 #bienvenida > *{
@@ -244,6 +245,7 @@ nav > ul{
     text-align: center;
     font-size: 2rem;
     backdrop-filter: blur(2px) contrast(0.25) brightness(2) saturate(0.5);
+    -webkit-backdrop-filter: blur(2px) contrast(0.25) brightness(2) saturate(0.5);
 }
 
 
@@ -388,6 +390,13 @@ nav > ul{
         justify-content: flex-start;
 
         backdrop-filter: blur(5px) brightness(2);
+        -webkit-backdrop-filter: blur(5px) brightness(2);
+
+    }
+
+    .left-arrow > img{
+        pointer-events: none;
+        user-select: none;
     }
     
     #right-control{
@@ -416,6 +425,12 @@ nav > ul{
         justify-content: flex-end;
 
         backdrop-filter: blur(5px) brightness(2);
+        -webkit-backdrop-filter: blur(5px) brightness(2);
+    }
+
+    .right-arrow > img{
+        pointer-events: none;
+        user-select: none;
     }
 
 
@@ -549,6 +564,16 @@ footer > .footer-cont > .img-cont:hover{
                     
         font-size: 1.5rem;
         text-align: center;
+    }
+
+    
+
+    .left-arrow > img{
+        width: 75%;
+    }
+
+    .right-arrow > img{
+        width: 75%;
     }
 
 }

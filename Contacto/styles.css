@@ -1,0 +1,416 @@
+
+*{
+    box-sizing: border-box;
+    scroll-padding-top:calc( var(--navHeight) * 5);
+    scroll-behavior: smooth;
+}
+
+html{
+    scroll-behavior: auto;
+    scroll-padding-top: calc(var(--navHeight) + 3.5rem);
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    min-width: 280px;
+    min-height: 650px;
+}
+
+html::-webkit-scrollbar{
+    display: none;
+}
+
+:root{
+    --navHeight: 75px;
+    --headerBG: transparent;
+    --headerColor: white;
+}
+
+body, h1, p{
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+main, html{
+    background: white;
+}
+
+/* Header y Nav */
+header{
+    position: fixed;
+    width: 100%;
+    height: auto;
+
+    background-color: var(--headerBG);
+    color: var(--headerColor);
+
+    top: 0;
+    z-index: 10;
+
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out, height 0.25s ease-in-out;
+}
+
+nav{
+    height: var(--navHeight);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 11;
+    transition: background-color 0.25s ease-in-out, height 0.25s ease-in-out;
+}
+
+nav > ul{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+
+}
+
+.link-li{
+    display: block;
+}
+
+.link{
+    color: var(--headerColor);
+    text-decoration: none;
+    transition: color 0.25s ease-in-out;
+    position: relative;
+}
+
+.link-active{
+    color: var(--headerColor);
+    text-decoration: none;
+    transition: color 0.25s ease-in-out;
+    position: relative;
+    border-bottom: solid 2px var(--headerColor);
+}
+
+.link::before{
+    content: "";
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    border-bottom: solid 2px var(--headerColor);
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    transition: clip-path 0.25s ease-in-out;
+}
+
+.link:hover::before{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    transition: clip-path 0.5s ease-in-out;
+}
+
+.link::after{
+    content: "";
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    border-bottom: solid 2px var(--headerColor);
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    transition: clip-path 0.25s ease-in-out;
+}
+
+.link:hover::after{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    transition: clip-path 0.5s ease-in-out;
+}
+
+/* Secciones */
+.fullscreen-section{
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    height: max-content;
+}
+
+#bienvenida{
+    padding-top: var(--navHeight);
+    padding-bottom: var(--navHeight);
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: url('../src/bg6.png') fixed no-repeat, url('../src/bg5.png') fixed no-repeat, url('../src/bg6.png') fixed no-repeat, url('../src/bg5.png') fixed no-repeat;
+    background-size: 50%, 50%, 100% 100%, 100% 100%;
+    background-position: center left, center right, -50vw, 50vw;
+
+    color: white
+
+}
+
+#bienvenida::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    z-index: 3;
+    backdrop-filter: contrast(0.7) brightness(0.7) saturate(1.7);
+    -webkit-backdrop-filter: contrast(0.7) brightness(0.7) saturate(1.7);
+}
+
+#bienvenida > *{
+    z-index: 4;
+}
+
+#bienvenida > h1{
+    padding: 2rem 1rem;
+    margin: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    /* backdrop-filter: blur(2px) contrast(0.7) brightness(0.7) saturate(0.5);
+    -webkit-backdrop-filter: blur(2px) contrast(0.7) brightness(0.7) saturate(0.5); */
+}
+
+#bienvenida > p{
+    font-weight: bold;
+    padding: 1rem;
+    backdrop-filter: blur(5px) contrast(0.5) brightness(2) saturate(1.5);
+    -webkit-backdrop-filter: blur(5px) contrast(0.5) brightness(2) saturate(1.5);
+    
+    box-shadow: 2px 2px 4px 1px #ff00ff,
+                -2px -2px 4px 1px #00ffff;
+
+    color: black;
+    text-align: center;
+    width: 90%;
+}
+
+
+
+#contacto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    height: 80vh;
+}
+
+#contacto > div, #contacto > form{
+    width: 50%;
+    height: 100%;
+    padding: 1rem;
+}
+
+#contacto > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#contacto > div > h2{
+    font-size: 2rem;
+}
+
+#contacto > div > p{
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+}
+
+#contacto > div > a > img{
+    width: 100%;
+    max-width: 75px;
+    transition: opacity 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+}
+#contacto > div > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 20%;
+    max-width: 75px;
+
+    margin: 0rem 0 2rem 0;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+
+    border-radius: 50%;
+    padding: 0.5rem;
+
+    transition: opacity 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+}
+
+#contacto > div > a:hover{
+    opacity: 0.7;
+    box-shadow: 2px 2px 4px 1px #ff00ff,
+                -2px -2px 4px 1px #00ffff;
+    transition: all 0.25s ease-in-out;
+}
+
+
+#contacto > div > p > a{
+    text-decoration: none;
+    color: black;
+    display: block;
+    opacity: 0.7;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid black;
+    margin: 1rem 0;
+    transition: opacity 0.25s ease-in-out;
+}
+#contacto > div > p > a:hover{
+    opacity: 1;
+    transition: all 0.25s ease-in-out;
+}
+
+#contacto > #form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 2.5rem 1rem;
+    position: relative;
+}
+
+#contacto > #form > *{
+    width: 100%;
+    height: 40px;
+    border: solid 1.25px rgba(0, 0, 0, 0.25);
+    margin: 0.5rem 0;
+    padding: 1rem;
+}
+
+#contacto > #form > *:valid{
+    border: solid 1.25px rgba(0, 0, 0, 0.25);
+}
+
+#contacto > #form > .focused-form-element:invalid{
+    border: solid 1.25px rgba(255, 0, 0, 0.7);
+}
+
+#contacto > #form > textarea{
+    resize: vertical;
+    height: 100px;
+    min-height: 100px;
+    margin: 2rem 0;
+}
+
+#contacto > #form > button{
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 1rem;
+}
+
+#contacto > #form > button:hover{
+    border: solid 1.25px black;
+    color: black;
+}
+
+
+
+footer{
+    width: 100%;
+    height: 25vh;
+    
+    margin-top: 4rem;
+
+    background-color: rgba(100, 100, 100, 0.2);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+footer > .footer-cont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+footer > .footer-cont > .img-cont{
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.25s ease-in-out;
+}
+
+footer > .footer-cont > .img-cont > img{
+    height: 30px;
+    aspect-ratio: 1/1;
+    pointer-events: none;
+    user-select: none;
+}
+
+
+.footer-link{
+    color: var(--headerColor);
+    opacity: 0.7;
+    text-decoration: none;
+    transition: color 0.25s ease-in-out;
+    position: relative;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.footer-link:hover{
+    opacity: 1;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.footer-link-active{
+    color: var(--headerColor);
+    text-decoration: none;
+    transition: color 0.25s ease-in-out;
+    position: relative;
+    border-bottom: solid 2px var(--headerColor);
+}
+
+footer > .footer-cont > .img-cont:hover{
+    opacity: 0.7;
+    transition: opacity 0.25s ease-in-out;
+}
+
+@media screen and (max-width: 670px) {
+    body{
+        font-size: 0.75rem;
+    }
+
+    header, footer{
+        font-size: 0.85rem;
+    }
+
+    .logo{
+        display: none;
+    }
+
+    nav > ul{
+        width: 100%;
+    }
+
+
+
+    #bienvenida > p{
+        margin: 1rem;
+        padding: 1rem 0;
+    }
+
+    #contacto{
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    #contacto > div, #contacto > form{
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+    }
+
+    
+    #contacto > div > a {
+        box-shadow: 2px 2px 4px 1px #ff00ff,
+                    -2px -2px 4px 1px #00ffff;
+    }
+}
