@@ -53,7 +53,7 @@ onresize = (event) => {
 leftControl.addEventListener('click', () => {
     if(cont > 0){
         cont--;
-        barLinks[cont].scrollIntoView();
+        barLinks[cont].scrollIntoView({block: "center", inline: "center" });
         projects[cont].scrollIntoView();
     }
 
@@ -67,7 +67,7 @@ leftControl.addEventListener('click', () => {
 rightControl.addEventListener('click', () => {
     if(cont < projects.length-1){
         cont++;
-        barLinks[cont].scrollIntoView();
+        barLinks[cont].scrollIntoView({block: "center", inline: "center" });
         projects[cont].scrollIntoView();
     }
     
@@ -80,7 +80,7 @@ rightControl.addEventListener('click', () => {
 for(let i=0; i<barLinks.length; i++){
     barLinks[i].addEventListener('click', () => {
         cont= i;
-        barLinks[cont].scrollIntoView();
+        barLinks[cont].scrollIntoView({block: "center", inline: "center" });
         projects[cont].scrollIntoView();
             
         for(let i=0; i<barLinks.length; i++)

@@ -160,17 +160,9 @@ nav > ul{
     z-index: 4;
 }
 
-#bienvenida > h1{
-    padding: 2rem 1rem;
-    margin: 1rem;
-    text-align: center;
-    font-size: 2rem;
-    /* backdrop-filter: blur(2px) contrast(0.7) brightness(0.7) saturate(0.5);
-    -webkit-backdrop-filter: blur(2px) contrast(0.7) brightness(0.7) saturate(0.5); */
-}
-
 #bienvenida > p{
     font-weight: bold;
+    font-size: 1.5rem;
     padding: 1rem;
     backdrop-filter: blur(5px) contrast(0.5) brightness(2) saturate(1.5);
     -webkit-backdrop-filter: blur(5px) contrast(0.5) brightness(2) saturate(1.5);
@@ -394,6 +386,7 @@ footer > .footer-cont > .img-cont:hover{
 
     #bienvenida > p{
         margin: 1rem;
+        font-size: 1rem;
         padding: 1rem 0;
     }
 
